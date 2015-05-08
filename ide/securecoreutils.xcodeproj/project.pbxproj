@@ -1,0 +1,212 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 47;
+	objects = {
+
+/* Begin PBXContainerItemProxy section */
+		A01FEBDD1AFD5B9900C3544B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A01FEBD21AFD5B9900C3544B /* bindletools.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = A0EE9F2318DFE15600CF8788;
+			remoteInfo = "bindle-ios";
+		};
+		A01FEBDF1AFD5B9900C3544B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A01FEBD21AFD5B9900C3544B /* bindletools.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = A0EE9F1B18DFE10F00CF8788;
+			remoteInfo = "bindle-osx";
+		};
+		A01FEBE11AFD5B9900C3544B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A01FEBD21AFD5B9900C3544B /* bindletools.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = A06092F718DF8FC000434E5C;
+			remoteInfo = fdtest;
+		};
+		A01FEBE31AFD5B9900C3544B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A01FEBD21AFD5B9900C3544B /* bindletools.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = A00F6E9E194278C5003CC8C2;
+			remoteInfo = cnftest;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		A01FEBAD1AFD5B0400C3544B /* acinclude.m4 */ = {isa = PBXFileReference; explicitFileType = text.script.sh; name = acinclude.m4; path = ../acinclude.m4; sourceTree = "<group>"; };
+		A01FEBAE1AFD5B0400C3544B /* AUTHORS */ = {isa = PBXFileReference; lastKnownFileType = text; name = AUTHORS; path = ../AUTHORS; sourceTree = "<group>"; };
+		A01FEBAF1AFD5B0400C3544B /* autogen.sh */ = {isa = PBXFileReference; explicitFileType = text.script; name = autogen.sh; path = ../autogen.sh; sourceTree = "<group>"; };
+		A01FEBB11AFD5B0400C3544B /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		A01FEBB51AFD5B0400C3544B /* git-tar-name.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "git-tar-name.txt"; sourceTree = "<group>"; };
+		A01FEBBB1AFD5B0400C3544B /* ChangeLog */ = {isa = PBXFileReference; lastKnownFileType = text; name = ChangeLog; path = ../ChangeLog; sourceTree = "<group>"; };
+		A01FEBBC1AFD5B0400C3544B /* configure.ac */ = {isa = PBXFileReference; explicitFileType = text.script; name = configure.ac; path = ../configure.ac; sourceTree = "<group>"; };
+		A01FEBBD1AFD5B0400C3544B /* COPYING */ = {isa = PBXFileReference; lastKnownFileType = text; name = COPYING; path = ../COPYING; sourceTree = "<group>"; };
+		A01FEBBF1AFD5B0400C3544B /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		A01FEBCE1AFD5B0400C3544B /* Makefile.am */ = {isa = PBXFileReference; explicitFileType = sourcecode.make; name = Makefile.am; path = ../Makefile.am; sourceTree = "<group>"; };
+		A01FEBCF1AFD5B0400C3544B /* NEWS */ = {isa = PBXFileReference; lastKnownFileType = text; name = NEWS; path = ../NEWS; sourceTree = "<group>"; };
+		A01FEBD01AFD5B0400C3544B /* README */ = {isa = PBXFileReference; explicitFileType = net.daringfireball.markdown; name = README; path = ../README; sourceTree = "<group>"; };
+		A01FEBD21AFD5B9900C3544B /* bindletools.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = bindletools.xcodeproj; path = bindletools/bindletools.xcodeproj; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		A01FEBAC1AFD5AB800C3544B /* src */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = src;
+			path = ../src;
+			sourceTree = "<group>";
+		};
+		A01FEBB01AFD5B0400C3544B /* build-aux */ = {
+			isa = PBXGroup;
+			children = (
+				A01FEBB11AFD5B0400C3544B /* .gitignore */,
+				A01FEBB51AFD5B0400C3544B /* git-tar-name.txt */,
+			);
+			name = "build-aux";
+			path = "../build-aux";
+			sourceTree = "<group>";
+		};
+		A01FEBBE1AFD5B0400C3544B /* m4 */ = {
+			isa = PBXGroup;
+			children = (
+				A01FEBBF1AFD5B0400C3544B /* .gitignore */,
+			);
+			name = m4;
+			path = ../m4;
+			sourceTree = "<group>";
+		};
+		A01FEBD11AFD5B8000C3544B /* contrib */ = {
+			isa = PBXGroup;
+			children = (
+				A01FEBD21AFD5B9900C3544B /* bindletools.xcodeproj */,
+			);
+			name = contrib;
+			path = ../contrib;
+			sourceTree = "<group>";
+		};
+		A01FEBD31AFD5B9900C3544B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A01FEBDE1AFD5B9900C3544B /* libbindle-ios.a */,
+				A01FEBE01AFD5B9900C3544B /* libbindle-osx.a */,
+				A01FEBE21AFD5B9900C3544B /* fdtest */,
+				A01FEBE41AFD5B9900C3544B /* cnftest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A0F841781AFD5A590008C18A = {
+			isa = PBXGroup;
+			children = (
+				A01FEBAD1AFD5B0400C3544B /* acinclude.m4 */,
+				A01FEBAE1AFD5B0400C3544B /* AUTHORS */,
+				A01FEBAF1AFD5B0400C3544B /* autogen.sh */,
+				A01FEBBB1AFD5B0400C3544B /* ChangeLog */,
+				A01FEBBC1AFD5B0400C3544B /* configure.ac */,
+				A01FEBBD1AFD5B0400C3544B /* COPYING */,
+				A01FEBCE1AFD5B0400C3544B /* Makefile.am */,
+				A01FEBCF1AFD5B0400C3544B /* NEWS */,
+				A01FEBD01AFD5B0400C3544B /* README */,
+				A01FEBB01AFD5B0400C3544B /* build-aux */,
+				A01FEBD11AFD5B8000C3544B /* contrib */,
+				A01FEBBE1AFD5B0400C3544B /* m4 */,
+				A01FEBAC1AFD5AB800C3544B /* src */,
+			);
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXProject section */
+		A0F841791AFD5A590008C18A /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0630;
+				ORGANIZATIONNAME = "Bindle Binaries";
+			};
+			buildConfigurationList = A0F8417C1AFD5A590008C18A /* Build configuration list for PBXProject "securecoreutils" */;
+			compatibilityVersion = "Xcode 6.3";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = A0F841781AFD5A590008C18A;
+			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = A01FEBD31AFD5B9900C3544B /* Products */;
+					ProjectRef = A01FEBD21AFD5B9900C3544B /* bindletools.xcodeproj */;
+				},
+			);
+			projectRoot = "";
+			targets = (
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		A01FEBDE1AFD5B9900C3544B /* libbindle-ios.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libbindle-ios.a";
+			remoteRef = A01FEBDD1AFD5B9900C3544B /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		A01FEBE01AFD5B9900C3544B /* libbindle-osx.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libbindle-osx.a";
+			remoteRef = A01FEBDF1AFD5B9900C3544B /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		A01FEBE21AFD5B9900C3544B /* fdtest */ = {
+			isa = PBXReferenceProxy;
+			fileType = "compiled.mach-o.executable";
+			path = fdtest;
+			remoteRef = A01FEBE11AFD5B9900C3544B /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		A01FEBE41AFD5B9900C3544B /* cnftest */ = {
+			isa = PBXReferenceProxy;
+			fileType = "compiled.mach-o.executable";
+			path = cnftest;
+			remoteRef = A01FEBE31AFD5B9900C3544B /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
+/* Begin XCBuildConfiguration section */
+		A0F8417D1AFD5A590008C18A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+			};
+			name = Debug;
+		};
+		A0F8417E1AFD5A590008C18A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A0F8417C1AFD5A590008C18A /* Build configuration list for PBXProject "securecoreutils" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A0F8417D1AFD5A590008C18A /* Debug */,
+				A0F8417E1AFD5A590008C18A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = A0F841791AFD5A590008C18A /* Project object */;
+}
