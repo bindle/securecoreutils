@@ -1,0 +1,14 @@
+/bindle-fd-poller.m4
+/bindle-gcc.m4
+/bindle-git.m4
+/bindle-libtool.m4
+/bindle-perl.m4
+/bindle-postgresql.m4
+/bindle-sqlite3.m4
+/bindle-tools.m4
+/bindle-xxd.m4
+/libtool.m4
+/ltoptions.m4
+/ltsugar.m4
+/ltversion.m4
+/lt~obsolete.m4
