@@ -91,7 +91,7 @@ DISTCHECK_CONFIGURE_FLAGS		= --enable-strictwarnings
 
 
 # Makefile includes
-GIT_PACKAGE_VERSION_DIR=build-aux
+GIT_PACKAGE_VERSION_DIR=include
 SUBST_EXPRESSIONS =
 include $(srcdir)/@bindletools_srcdir@/build-aux/makefile-autotools.am
 include $(srcdir)/@bindletools_srcdir@/build-aux/makefile-subst.am
