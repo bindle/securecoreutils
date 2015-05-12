@@ -55,6 +55,7 @@
 #endif
 
 #include <getopt.h>
+#include <unistd.h>
 
 
 ///////////////////
