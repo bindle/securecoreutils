@@ -149,9 +149,9 @@ int scu_widget_pathcheck(scu_config * cnf)
 void scu_widget_pathcheck_usage(void)
 {
    printf("Usage: %s pathcheck [OPTIONS] file\n", PROGRAM_NAME);
-   printf("Usage: pathcheck [OPTIONS] file\n");
-   scu_usage_options();
+   printf("       pathcheck [OPTIONS] file\n");
    printf("\n");
+   scu_usage_options();
    return;
 }
 

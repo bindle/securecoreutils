@@ -184,10 +184,10 @@ int scu_widget_cat(scu_config * cnf)
 void scu_widget_cat_usage(void)
 {
    printf("Usage: %s cat [OPTIONS] file\n", PROGRAM_NAME);
-   printf("Usage: cat [OPTIONS] file\n");
-   printf("Usage: seccat [OPTIONS] file\n");
-   scu_usage_options();
+   printf("       cat [OPTIONS] file\n");
+   printf("       seccat [OPTIONS] file\n");
    printf("\n");
+   scu_usage_options();
    return;
 }
 

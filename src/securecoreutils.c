@@ -273,11 +273,11 @@ int scu_pathcheck(const char * path)
 
 void scu_usage(void)
 {
-   printf("Usage: %s [OPTIONS] widget ...\n", PROGRAM_NAME);
-   printf("Usage: widget ...\n");
+   printf("Usage: %s [OPTIONS] widget [WIDGETOPTIONS]\n", PROGRAM_NAME);
+   printf("       widget [OPTIONS]\n");
+   printf("\n");
    scu_usage_options();
    scu_usage_widgets();
-   printf("\n");
    return;
 }
 
@@ -289,6 +289,7 @@ void scu_usage_options(void)
    printf("  -q, --quiet, --silent     do not print messages\n");
    printf("  -V, --version             print version number and exit\n");
    printf("  -v, --verbose             print verbose messages\n");
+   printf("\n");
    return;
 }
 
@@ -309,6 +310,7 @@ void scu_usage_widgets(void)
          printf("   %-25s %s\n", pair, scu_widget_map[i].desc);
       };
    };
+   printf("\n");
    return;
 }
 
