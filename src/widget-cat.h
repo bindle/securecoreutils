@@ -62,4 +62,6 @@
 
 int scu_widget_cat(scu_config * cnf);
 
+void scu_widget_cat_usage(void);
+
 #endif /* end of header */

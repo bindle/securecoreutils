@@ -62,5 +62,6 @@
 
 int scu_widget_pathcheck(scu_config * cnf);
 
+void scu_widget_pathcheck_usage(void);
 
 #endif /* end of header */
