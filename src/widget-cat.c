@@ -157,7 +157,27 @@ int scu_widget_cat(scu_config * cnf)
       return(1);
    };
 
-   len = 1;
+   if ((len = read(fd, buff, 8)) == -1)
+   {
+      fprintf(stderr, "%s: %s: %s\n", PROGRAM_NAME, cnf->widget->name, strerror(errno));
+      close(fd);
+      return(1);
+   };
+
+   if (!(scu_is_ascii_buffer(buff, len)))
+   {
+      fprintf(stderr, "%s: %s: binary file, try `zcat'\n", PROGRAM_NAME, cnf->widget->name);
+      close(fd);
+      return(1);
+   }
+
+   if ((len = write(STDOUT_FILENO, buff, len)) == -1)
+   {
+      fprintf(stderr, "%s: %s: %s\n", PROGRAM_NAME, cnf->widget->name, strerror(errno));
+      close(fd);
+      return(1);
+   };
+
    while (len > 0)
    {
       if ((len = read(fd, buff, sizeof(buff))) == -1)

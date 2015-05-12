@@ -393,4 +393,17 @@ const char * scu_strerror(int err)
    return("unknown error");
 }
 
+int scu_is_ascii_buffer(const char * buff, ssize_t len)
+{
+   ssize_t pos;
+   assert(buff != NULL);
+
+   for(pos = 0; pos < len; pos++)
+      if ((buff[pos] < 32) || (buff[pos] > 126))
+         return(0);
+
+   return(1);
+}
+
+
 /* end of source */

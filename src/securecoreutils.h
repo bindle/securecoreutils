@@ -145,5 +145,7 @@ const char * scu_strerror(int err);
 /// Displays secure core utils version
 void scu_version(void);
 
+int scu_is_ascii_buffer(const char * buff, ssize_t len);
+
 
 #endif /* end of header */
