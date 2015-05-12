@@ -126,6 +126,7 @@ int main(int argc, char * argv[])
    memset(&cnf, 0, sizeof(scu_config));
 
    // skip argument processing if called via alias
+printf("basename: %s\n", scu_basename(argv[0]));
    if ((cnf.widget = scu_widget_lookup(scu_basename(argv[0]), 1)) != NULL)
    {
       cnf.argc = argc;
@@ -206,7 +207,7 @@ const char * scu_basename(const char * path)
    const char * ptr;
    assert(path != NULL);
    if ((ptr = rindex(path, '/')))
-      return(ptr);
+      return(&ptr[1]);
    return(path);
 }
 
