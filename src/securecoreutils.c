@@ -306,13 +306,9 @@ void scu_usage_widgets(void)
             snprintf(pair, 29, "%s, %s", scu_widget_map[i].name, scu_widget_map[i].alias);
          else
             snprintf(pair, 29, "%s", scu_widget_map[i].name);
-         printf("   %-25s %s", pair, scu_widget_map[i].desc);
+         printf("   %-25s %s\n", pair, scu_widget_map[i].desc);
       };
    };
-   //printf("  cat                       writes file to standard out\n");
-   //printf("  head                      writes beginning of file to standard out\n");
-   //printf("  pathcheck                 performs sanity checks on file path\n");
-   //printf("  tail                      writes end of file to standard out\n");
    return;
 }
 
