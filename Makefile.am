@@ -63,7 +63,7 @@ info_TEXINFOS				=
 noinst_LTLIBRARIES			=
 noinst_HEADERS				=
 noinst_PROGRAMS				=
-bin_PROGRAMS				=
+bin_PROGRAMS				= src/securecoreutils
 bin_SCRIPTS				=
 pkgdata_DATA				=
 sbin_SCRIPTS				=
@@ -88,6 +88,18 @@ CLEANFILES				= \
 					  @PACKAGE_TARNAME@-*.txz \
 					  @PACKAGE_TARNAME@-*.zip
 DISTCHECK_CONFIGURE_FLAGS		= --enable-strictwarnings
+
+
+# macros for src/securecoreutils
+src_securecoreutils_DEPENDENCIES	= Makefile $(LDADD)
+src_securecoreutils_SOURCES		= $(include_HEADERS) \
+					  $(noinst_HEADERS) \
+					  src/securecoreutils.c \
+					  src/securecoreutils.h \
+					  src/widget-cat.c \
+					  src/widget-cat.h \
+					  src/widget-pathcheck.c \
+					  src/widget-pathcheck.h
 
 
 # Makefile includes
