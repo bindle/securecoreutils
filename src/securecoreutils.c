@@ -253,12 +253,14 @@ int scu_pathcheck(const char * path)
    while((ptr = rindex(str, '/')) != NULL)
    {
       ptr[0] = '\0';
-      if ((c = lstat(path, &sb)) == -1)
+      if (str == ptr)
+         continue;
+      if ((c = lstat(str, &sb)) == -1)
       {
          free(str);
          return(SCU_ERRNO);
       };
-      if ((sb.st_mode & S_IFMT) != S_IFREG)
+      if ((sb.st_mode & S_IFMT) == S_IFLNK)
       {
          free(str);
          return(SCU_EFILE);
