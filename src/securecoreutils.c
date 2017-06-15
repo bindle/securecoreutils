@@ -91,7 +91,7 @@ const scu_widget scu_widget_map[] =
    {
       "pathcheck",                                    // widget name
       "Validates path using internal checks.",        // widget description
-      NULL,                                           // widget alias
+      "secpath",                                      // widget alias
       scu_widget_pathcheck,                           // widget function
    },
    {
