@@ -317,7 +317,7 @@ void scu_usage_widgets(void)
             snprintf(pair, 29, "%s, %s", scu_widget_map[i].name, scu_widget_map[i].alias);
          else
             snprintf(pair, 29, "%s", scu_widget_map[i].name);
-         printf("   %-25s %s\n", pair, scu_widget_map[i].desc);
+         printf("   %-24s %s\n", pair, scu_widget_map[i].desc);
       };
    };
    printf("\n");
