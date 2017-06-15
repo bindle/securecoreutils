@@ -35,8 +35,8 @@
  *  @file securecoreutils.c
  *  Secure Core Utils widget wrapper
  */
-#ifndef __SRC_SECURECOREUTILS_H
-#define __SRC_SECURECOREUTILS_H 1
+#ifndef __SRC_WIDGET_TAIL_H
+#define __SRC_WIDGET_TAIL_H 1
 
 
 ///////////////
@@ -48,90 +48,7 @@
 #pragma mark - Headers
 #endif
 
-#ifdef HAVE_CONFIG_H
-#   include "config.h"
-#else
-#   include "git-package-version.h"
-#endif
-
-#include <getopt.h>
-#include <unistd.h>
-#include <limits.h>
-
-
-///////////////////
-//               //
-//  Definitions  //
-//               //
-///////////////////
-#ifdef __SECURECOREUTILS_PMARK
-#pragma mark - Definitions
-#endif
-
-#ifndef PROGRAM_NAME
-#define PROGRAM_NAME "securecoreutils"
-#endif
-#ifndef PACKAGE_BUGREPORT
-#define PACKAGE_BUGREPORT "syzdek@bindlebinaries.com"
-#endif
-#ifndef PACKAGE_COPYRIGHT
-#define PACKAGE_COPYRIGHT ""
-#endif
-#ifndef PACKAGE_NAME
-#define PACKAGE_NAME ":-|"
-#endif
-#ifndef PACKAGE_VERSION
-#define PACKAGE_VERSION ""
-#endif
-
-
-#ifdef LINE_MAX
-#   define SCU_LINE_MAX LINE_MAX
-#elif defined _POSIX2_LINE_MAX
-#   define SCU_LINE_MAX _POSIX2_LINE_MAX
-#else
-#   define SCU_LINE_MAX 2048
-#endif
-#define SCU_BUFF_MAX (SCU_LINE_MAX*20)
-
-
-#define SCU_ESUCCESS 0
-#define SCU_ERRNO    1
-#define SCU_EPATH    2
-#define SCU_EFILE    3
-#define SCU_EANCHOR  4
-
-
-//////////////////
-//              //
-//  Data Types  //
-//              //
-//////////////////
-#ifdef __SECURECOREUTILS_PMARK
-#pragma mark - Data Types
-#endif
-
-typedef struct scu_config     scu_config;
-typedef struct scu_widget     scu_widget;
-
-struct scu_config
-{
-   int                  quiet;
-   int                  verbose;
-   int                  opt_index;
-   int                  argc;
-   char              ** argv;
-   const scu_widget   * widget;
-};
-
-
-struct scu_widget
-{
-   const char        * name;
-   const char        * desc;
-   const char        * alias;
-   int  (*func)(scu_config * cnf);
-};
+#include "securecoreutils.h"
 
 
 //////////////////
@@ -139,25 +56,12 @@ struct scu_widget
 //  Prototypes  //
 //              //
 //////////////////
-#ifdef __SECURECOREUTILS_PMARK
+#ifdef __TALLYMARK_PMARK
 #pragma mark -
 #endif
 
-/// checks paths
-int scu_pathcheck(const char * path);
+int scu_widget_tail(scu_config * cnf);
 
-/// Displays secure core utils wrapper usage
-void scu_usage(void);
-void scu_usage_options(void);
-void scu_usage_widgets(void);
-
-const char * scu_strerror(int err);
-
-
-/// Displays secure core utils version
-void scu_version(void);
-
-int scu_is_ascii_buffer(const char * buff, ssize_t len);
-
+void scu_widget_tail_usage(void);
 
 #endif /* end of header */

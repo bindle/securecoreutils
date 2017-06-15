@@ -99,7 +99,9 @@ src_securecoreutils_SOURCES		= $(include_HEADERS) \
 					  src/widget-cat.c \
 					  src/widget-cat.h \
 					  src/widget-pathcheck.c \
-					  src/widget-pathcheck.h
+					  src/widget-pathcheck.h \
+					  src/widget-tail.c \
+					  src/widget-tail.h
 
 
 # Makefile includes

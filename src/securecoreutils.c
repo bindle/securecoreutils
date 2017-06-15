@@ -54,6 +54,7 @@
 
 #include "widget-cat.h"
 #include "widget-pathcheck.h"
+#include "widget-tail.h"
 
 
 //////////////////
@@ -92,6 +93,12 @@ const scu_widget scu_widget_map[] =
       "Validates path using internal checks.",        // widget description
       NULL,                                           // widget alias
       scu_widget_pathcheck,                           // widget function
+   },
+   {
+      "tail",                                         // widget name
+      "Writes contents of file to standard out.",     // widget description
+      "sectail",                                      // widget alias
+      scu_widget_tail,                                // widget function
    },
    { NULL, NULL, NULL, NULL }
 };
@@ -280,6 +287,7 @@ void scu_usage(void)
    printf("       widget [OPTIONS]\n");
    printf("\n");
    scu_usage_options();
+   printf("\n");
    scu_usage_widgets();
    return;
 }
@@ -292,7 +300,6 @@ void scu_usage_options(void)
    printf("  -q, --quiet, --silent     do not print messages\n");
    printf("  -V, --version             print version number and exit\n");
    printf("  -v, --verbose             print verbose messages\n");
-   printf("\n");
    return;
 }
 

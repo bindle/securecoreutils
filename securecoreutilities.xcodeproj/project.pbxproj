@@ -21,6 +21,7 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		A005C1831EC8C6BD00A08403 /* widget-tail.c in Sources */ = {isa = PBXBuildFile; fileRef = A005C1811EC8BDAF00A08403 /* widget-tail.c */; };
 		A054C3DD1B0292930036591C /* securecoreutils.c in Sources */ = {isa = PBXBuildFile; fileRef = A054C3D71B0292930036591C /* securecoreutils.c */; };
 		A054C3DE1B0292930036591C /* widget-cat.c in Sources */ = {isa = PBXBuildFile; fileRef = A054C3D91B0292930036591C /* widget-cat.c */; };
 		A054C3DF1B0292930036591C /* widget-pathcheck.c in Sources */ = {isa = PBXBuildFile; fileRef = A054C3DB1B0292930036591C /* widget-pathcheck.c */; };
@@ -49,6 +50,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		A005C1811EC8BDAF00A08403 /* widget-tail.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "widget-tail.c"; sourceTree = "<group>"; };
+		A005C1821EC8BDAF00A08403 /* widget-tail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "widget-tail.h"; sourceTree = "<group>"; };
 		A054C3A51B0292600036591C /* securecoreutilities */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = securecoreutilities; sourceTree = BUILT_PRODUCTS_DIR; };
 		A054C3AD1B0292930036591C /* acinclude.m4 */ = {isa = PBXFileReference; explicitFileType = text.script; fileEncoding = 4; path = acinclude.m4; sourceTree = "<group>"; };
 		A054C3AE1B0292930036591C /* AUTHORS */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = AUTHORS; sourceTree = "<group>"; };
@@ -142,6 +145,8 @@
 				A054C3DA1B0292930036591C /* widget-cat.h */,
 				A054C3DB1B0292930036591C /* widget-pathcheck.c */,
 				A054C3DC1B0292930036591C /* widget-pathcheck.h */,
+				A005C1811EC8BDAF00A08403 /* widget-tail.c */,
+				A005C1821EC8BDAF00A08403 /* widget-tail.h */,
 			);
 			path = src;
 			sourceTree = "<group>";
@@ -173,7 +178,7 @@
 		A054C3961B0291F50036591C /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0630;
+				LastUpgradeCheck = 0830;
 				TargetAttributes = {
 					A054C39C1B0292230036591C = {
 						CreatedOnToolsVersion = 6.3.1;
@@ -224,6 +229,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A054C3DE1B0292930036591C /* widget-cat.c in Sources */,
+				A005C1831EC8C6BD00A08403 /* widget-tail.c in Sources */,
 				A054C3DF1B0292930036591C /* widget-pathcheck.c in Sources */,
 				A054C3DD1B0292930036591C /* securecoreutils.c in Sources */,
 			);
@@ -243,17 +249,53 @@
 		A054C39A1B0291F50036591C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					include,
 				);
+				ONLY_ACTIVE_ARCH = YES;
 			};
 			name = Debug;
 		};
 		A054C39B1B0291F50036591C /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
@@ -374,6 +416,7 @@
 				A054C39E1B0292230036591C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		A054C3AA1B0292600036591C /* Build configuration list for PBXNativeTarget "securecoreutilities" */ = {
 			isa = XCConfigurationList;
@@ -382,6 +425,7 @@
 				A054C3AC1B0292600036591C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

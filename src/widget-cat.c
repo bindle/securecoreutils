@@ -208,6 +208,7 @@ void scu_widget_cat_usage(void)
    printf("       seccat [OPTIONS] file\n");
    printf("\n");
    scu_usage_options();
+   printf("\n");
    return;
 }
 

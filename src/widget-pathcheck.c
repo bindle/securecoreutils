@@ -152,6 +152,7 @@ void scu_widget_pathcheck_usage(void)
    printf("       pathcheck [OPTIONS] file\n");
    printf("\n");
    scu_usage_options();
+   printf("\n");
    return;
 }
 
