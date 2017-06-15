@@ -118,6 +118,10 @@ include $(srcdir)/@bindletools_srcdir@/build-aux/makefile-version.am
 
 # local targets
 install-exec-local:
+	( cd $(DESTDIR)$(bindir); ln -sf securecoreutils seccat; )
+	( cd $(DESTDIR)$(bindir); ln -sf securecoreutils sectail; )
+	( cd $(DESTDIR)$(bindir); ln -sf securecoreutils secpath; )
+
 
 install-data-local:
 
