@@ -283,12 +283,30 @@ int scu_pathcheck(const char * path)
 
 void scu_usage(void)
 {
+   int  i;
+   char pair[30];
+
    printf("Usage: %s [OPTIONS] widget [WIDGETOPTIONS]\n", PROGRAM_NAME);
    printf("       widget [OPTIONS]\n");
    printf("\n");
+
    scu_usage_options();
    printf("\n");
-   scu_usage_widgets();
+
+   printf("WIDGETS:\n");
+   for (i = 0; scu_widget_map[i].name; i++)
+   {
+      if (scu_widget_map[i].func != NULL)
+      {
+         if (scu_widget_map[i].alias != NULL)
+            snprintf(pair, 29, "%s, %s", scu_widget_map[i].name, scu_widget_map[i].alias);
+         else
+            snprintf(pair, 29, "%s", scu_widget_map[i].name);
+         printf("   %-24s %s\n", pair, scu_widget_map[i].desc);
+      };
+   };
+   printf("\n");
+
    return;
 }
 
@@ -304,23 +322,7 @@ void scu_usage_options(void)
 }
 
 
-void scu_usage_widgets(void)
 {
-   int i;
-   char pair[30];
-   printf("WIDGETS:\n");
-   for (i = 0; scu_widget_map[i].name; i++)
-   {
-      if (scu_widget_map[i].func != NULL)
-      {
-         if (scu_widget_map[i].alias != NULL)
-            snprintf(pair, 29, "%s, %s", scu_widget_map[i].name, scu_widget_map[i].alias);
-         else
-            snprintf(pair, 29, "%s", scu_widget_map[i].name);
-         printf("   %-24s %s\n", pair, scu_widget_map[i].desc);
-      };
-   };
-   printf("\n");
    return;
 }
 

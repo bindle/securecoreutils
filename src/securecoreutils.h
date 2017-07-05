@@ -149,7 +149,6 @@ int scu_pathcheck(const char * path);
 /// Displays secure core utils wrapper usage
 void scu_usage(void);
 void scu_usage_options(void);
-void scu_usage_widgets(void);
 
 const char * scu_strerror(int err);
 
