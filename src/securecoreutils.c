@@ -307,6 +307,9 @@ void scu_usage(void)
    };
    printf("\n");
 
+   scu_usage_restrictions();
+   printf("\n");
+
    return;
 }
 
@@ -322,7 +325,14 @@ void scu_usage_options(void)
 }
 
 
+void scu_usage_restrictions(void)
 {
+   printf("RESTRICTIONS:\n");
+   printf("   File path must begin with a '/' character.\n");
+   printf("   File path may not end with a '/' character.\n");
+   printf("   File path may not be a symlink.\n");
+   printf("   File path may not contain a symlink as part of the path.\n");
+   printf("   File path may not contain \"..\", \"./\", \"/.\", or \"//\".\n");
    return;
 }
 

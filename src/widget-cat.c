@@ -209,6 +209,8 @@ void scu_widget_cat_usage(void)
    printf("\n");
    scu_usage_options();
    printf("\n");
+   scu_usage_restrictions();
+   printf("\n");
    return;
 }
 

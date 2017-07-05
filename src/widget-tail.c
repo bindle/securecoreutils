@@ -476,6 +476,8 @@ void scu_widget_tail_usage(void)
    printf("  -f, --follow              output appended data as the file grows\n");
    printf("  -n, --lines=X             output the last X lines\n");
    printf("\n");
+   scu_usage_restrictions();
+   printf("\n");
    return;
 }
 

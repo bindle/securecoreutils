@@ -153,6 +153,8 @@ void scu_widget_pathcheck_usage(void)
    printf("\n");
    scu_usage_options();
    printf("\n");
+   scu_usage_restrictions();
+   printf("\n");
    return;
 }
 
