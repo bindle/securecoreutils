@@ -55,7 +55,7 @@ DEFS					=
 
 # automake targets
 check_PROGRAMS				=
-doc_DATA				= README COPYING ChangeLog AUTHORS
+doc_DATA				= README COPYING ChangeLog AUTHORS TODO
 include_HEADERS				=
 lib_LTLIBRARIES				=
 man_MANS				=
