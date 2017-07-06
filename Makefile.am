@@ -105,7 +105,9 @@ src_securecoreutils_SOURCES		= $(include_HEADERS) \
 					  src/widget-rmdir.c \
 					  src/widget-rmdir.h \
 					  src/widget-tail.c \
-					  src/widget-tail.h
+					  src/widget-tail.h \
+					  src/widget-zcat.c \
+					  src/widget-zcat.h
 
 
 # Makefile includes
@@ -127,6 +129,7 @@ install-exec-local:
 	( cd $(DESTDIR)$(bindir); ln -sf securecoreutils secrm; )
 	( cd $(DESTDIR)$(bindir); ln -sf securecoreutils secrmdir; )
 	( cd $(DESTDIR)$(bindir); ln -sf securecoreutils sectail; )
+	( cd $(DESTDIR)$(bindir); ln -sf securecoreutils seczcat; )
 
 
 install-data-local:

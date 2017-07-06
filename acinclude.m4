@@ -34,4 +34,43 @@
 #   acinclude.m4 - custom m4 macros used by configure.ac
 #
 
+# AC_OPENVPN_LDAPCMD_COMPONENTS
+# ______________________________________________________________________________
+AC_DEFUN([AC_SCU_ZCAT_DEPS],[dnl
+
+   # check zlib
+   USE_ZLIB=yes;
+   AC_CHECK_HEADERS([zlib.h],      [], [USE_ZLIB=no])
+   AC_SEARCH_LIBS([gzclose],  [z], [], [USE_ZLIB=no])
+   AC_SEARCH_LIBS([gzerror],  [z], [], [USE_ZLIB=no])
+   AC_SEARCH_LIBS([gzopen],   [z], [], [USE_ZLIB=no])
+   AC_SEARCH_LIBS([gzread],   [z], [], [USE_ZLIB=no])
+   if test "x${USE_ZLIB}" = "xyes";then
+      AC_DEFINE_UNQUOTED(USE_ZLIB, 1, [Use zlib])
+   fi
+
+   # check bzip2
+   USE_BZIP2=yes;
+   AC_CHECK_HEADERS([bzlib.h],                   [], [USE_BZIP2=no])
+   AC_SEARCH_LIBS([BZ2_bzRead],           [bz2], [], [USE_BZIP2=no])
+   AC_SEARCH_LIBS([BZ2_bzReadClose],      [bz2], [], [USE_BZIP2=no])
+   AC_SEARCH_LIBS([BZ2_bzReadGetUnused],  [bz2], [], [USE_BZIP2=no])
+   AC_SEARCH_LIBS([BZ2_bzReadOpen],       [bz2], [], [USE_BZIP2=no])
+   if test "x${USE_BZIP2}" = "xyes";then
+      AC_DEFINE_UNQUOTED(USE_BZIP2, 1, [Use bzip2])
+   fi
+
+   AC_CHECK_PROG([USE_XZ], [xz], [yes], [no])
+   if test "x${USE_XZ}" = "xyes";then
+      AC_DEFINE_UNQUOTED(USE_XZ, 1, [Use xz])
+   fi
+
+   AC_CHECK_PROG([USE_Z], [uncompress], [yes], [no])
+   if test "x${USE_Z}" = "xyes";then
+      AC_DEFINE_UNQUOTED(USE_Z, 1, [Use uncompress])
+   fi
+
+])dnl
+
+
 # end of m4 file

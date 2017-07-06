@@ -102,6 +102,38 @@ AM_PROG_LEX
 AC_PROG_LN_S
 
 
+# check for common functions
+AC_FUNC_FORK
+AC_FUNC_MALLOC
+AC_FUNC_REALLOC
+AC_FUNC_STRERROR_R
+
+# Type checks
+AC_TYPE_INT8_T
+AC_TYPE_INT16_T
+AC_TYPE_INT32_T
+AC_TYPE_INT64_T
+AC_TYPE_OFF_T
+AC_TYPE_SIZE_T
+AC_TYPE_SSIZE_T
+AC_TYPE_UID_T
+AC_TYPE_UINT8_T
+AC_TYPE_UINT16_T
+AC_TYPE_UINT32_T
+AC_TYPE_UINT64_T
+
+# check for required functions
+AC_CHECK_FUNCS([bzero],          [], [AC_MSG_ERROR([missing required functions])])
+AC_CHECK_FUNCS([memset],         [], [AC_MSG_ERROR([missing required functions])])
+AC_CHECK_FUNCS([rmdir],          [], [AC_MSG_ERROR([missing required functions])])
+AC_CHECK_FUNCS([strcasecmp],     [], [AC_MSG_ERROR([missing required functions])])
+AC_CHECK_FUNCS([strdup],         [], [AC_MSG_ERROR([missing required functions])])
+AC_CHECK_FUNCS([strerror],       [], [AC_MSG_ERROR([missing required functions])])
+
+# check for headers
+AC_CHECK_HEADERS([fcntl.h],     [], [AC_MSG_ERROR([missing required headers])])
+AC_CHECK_HEADERS([limits.h],    [], [AC_MSG_ERROR([missing required headers])])
+
 # GNU Libtool Support
 LT_INIT(dlopen disable-fast-install win32-dll)
 
@@ -116,6 +148,7 @@ AC_BINDLE_GIT_PACKAGE_VERSION([contrib/bindletools/build-aux/git-package-version
 
 # custom configure options
 AC_BINDLE_ENABLE_WARNINGS
+AC_SCU_ZCAT_DEPS
 
 
 # enables getopt_long if header and functions were found
@@ -132,6 +165,9 @@ AC_MSG_NOTICE([ ])
 AC_MSG_NOTICE([   Secure Core Utilities $GIT_PACKAGE_VERSION ($GIT_PACKAGE_BUILD)])
 AC_MSG_NOTICE([ ])
 AC_MSG_NOTICE([   Features:])
+AC_MSG_NOTICE([      zlib support:              $USE_ZLIB])
+AC_MSG_NOTICE([      bzip2 support:             $USE_BZIP2])
+AC_MSG_NOTICE([      xz support:                $USE_XZ])
 AC_MSG_NOTICE([ ])
 AC_MSG_NOTICE([   Please send suggestions to:   $PACKAGE_BUGREPORT])
 AC_MSG_NOTICE([ ])

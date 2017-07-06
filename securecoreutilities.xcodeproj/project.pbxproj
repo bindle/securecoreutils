@@ -24,6 +24,9 @@
 		A005C1831EC8C6BD00A08403 /* widget-tail.c in Sources */ = {isa = PBXBuildFile; fileRef = A005C1811EC8BDAF00A08403 /* widget-tail.c */; };
 		A0446A211F0DABB4000085C7 /* widget-rm.c in Sources */ = {isa = PBXBuildFile; fileRef = A0446A1F1F0DA0F3000085C7 /* widget-rm.c */; };
 		A0446A241F0DC853000085C7 /* widget-rmdir.c in Sources */ = {isa = PBXBuildFile; fileRef = A0446A221F0DC7D2000085C7 /* widget-rmdir.c */; };
+		A0446A271F0DDF83000085C7 /* widget-zcat.c in Sources */ = {isa = PBXBuildFile; fileRef = A0446A251F0DDF78000085C7 /* widget-zcat.c */; };
+		A0446A2F1F0DFAEB000085C7 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = A0446A2E1F0DFAEB000085C7 /* libz.tbd */; };
+		A0446A311F0E1EAA000085C7 /* libbz2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = A0446A301F0E1EAA000085C7 /* libbz2.tbd */; };
 		A054C3DD1B0292930036591C /* securecoreutils.c in Sources */ = {isa = PBXBuildFile; fileRef = A054C3D71B0292930036591C /* securecoreutils.c */; };
 		A054C3DE1B0292930036591C /* widget-cat.c in Sources */ = {isa = PBXBuildFile; fileRef = A054C3D91B0292930036591C /* widget-cat.c */; };
 		A054C3DF1B0292930036591C /* widget-pathcheck.c in Sources */ = {isa = PBXBuildFile; fileRef = A054C3DB1B0292930036591C /* widget-pathcheck.c */; };
@@ -58,6 +61,12 @@
 		A0446A201F0DA0F3000085C7 /* widget-rm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "widget-rm.h"; sourceTree = "<group>"; };
 		A0446A221F0DC7D2000085C7 /* widget-rmdir.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "widget-rmdir.c"; sourceTree = "<group>"; };
 		A0446A231F0DC7D2000085C7 /* widget-rmdir.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "widget-rmdir.h"; sourceTree = "<group>"; };
+		A0446A251F0DDF78000085C7 /* widget-zcat.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "widget-zcat.c"; sourceTree = "<group>"; };
+		A0446A261F0DDF78000085C7 /* widget-zcat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "widget-zcat.h"; sourceTree = "<group>"; };
+		A0446A2A1F0DF1D5000085C7 /* configure.ac */ = {isa = PBXFileReference; explicitFileType = text.script; fileEncoding = 4; path = configure.ac; sourceTree = "<group>"; };
+		A0446A2B1F0DF1D5000085C7 /* TODO */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = TODO; sourceTree = "<group>"; };
+		A0446A2E1F0DFAEB000085C7 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		A0446A301F0E1EAA000085C7 /* libbz2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libbz2.tbd; path = usr/lib/libbz2.tbd; sourceTree = SDKROOT; };
 		A054C3A51B0292600036591C /* securecoreutilities */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = securecoreutilities; sourceTree = BUILT_PRODUCTS_DIR; };
 		A054C3AD1B0292930036591C /* acinclude.m4 */ = {isa = PBXFileReference; explicitFileType = text.script; fileEncoding = 4; path = acinclude.m4; sourceTree = "<group>"; };
 		A054C3AE1B0292930036591C /* AUTHORS */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = AUTHORS; sourceTree = "<group>"; };
@@ -84,12 +93,23 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A0446A311F0E1EAA000085C7 /* libbz2.tbd in Frameworks */,
+				A0446A2F1F0DFAEB000085C7 /* libz.tbd in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A0446A2D1F0DFAEB000085C7 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A0446A301F0E1EAA000085C7 /* libbz2.tbd */,
+				A0446A2E1F0DFAEB000085C7 /* libz.tbd */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		A054C3951B0291F50036591C = {
 			isa = PBXGroup;
 			children = (
@@ -97,15 +117,18 @@
 				A054C3AE1B0292930036591C /* AUTHORS */,
 				A054C3AF1B0292930036591C /* autogen.sh */,
 				A054C3BC1B0292930036591C /* ChangeLog */,
+				A0446A2A1F0DF1D5000085C7 /* configure.ac */,
 				A054C3BD1B0292930036591C /* COPYING */,
 				A054C3D31B0292930036591C /* Makefile.am */,
 				A054C3D41B0292930036591C /* NEWS */,
 				A054C3D51B0292930036591C /* README */,
+				A0446A2B1F0DF1D5000085C7 /* TODO */,
 				A054C3B01B0292930036591C /* build-aux */,
 				A054C3BE1B0292930036591C /* include */,
 				A054C3C31B0292930036591C /* m4 */,
 				A054C3D61B0292930036591C /* src */,
 				A054C3A61B0292600036591C /* Products */,
+				A0446A2D1F0DFAEB000085C7 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -157,6 +180,8 @@
 				A0446A231F0DC7D2000085C7 /* widget-rmdir.h */,
 				A005C1811EC8BDAF00A08403 /* widget-tail.c */,
 				A005C1821EC8BDAF00A08403 /* widget-tail.h */,
+				A0446A251F0DDF78000085C7 /* widget-zcat.c */,
+				A0446A261F0DDF78000085C7 /* widget-zcat.h */,
 			);
 			path = src;
 			sourceTree = "<group>";
@@ -241,6 +266,7 @@
 				A0446A241F0DC853000085C7 /* widget-rmdir.c in Sources */,
 				A054C3DE1B0292930036591C /* widget-cat.c in Sources */,
 				A005C1831EC8C6BD00A08403 /* widget-tail.c in Sources */,
+				A0446A271F0DDF83000085C7 /* widget-zcat.c in Sources */,
 				A054C3DF1B0292930036591C /* widget-pathcheck.c in Sources */,
 				A054C3DD1B0292930036591C /* securecoreutils.c in Sources */,
 				A0446A211F0DABB4000085C7 /* widget-rm.c in Sources */,
@@ -273,6 +299,10 @@
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"USE_ZLIB=1",
+					"USE_BZIP2=1",
+				);
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
@@ -302,6 +332,10 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"USE_ZLIB=1",
+					"USE_BZIP2=1",
+				);
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
@@ -354,10 +388,6 @@
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;

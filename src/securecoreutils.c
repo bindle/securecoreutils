@@ -57,6 +57,7 @@
 #include "widget-rm.h"
 #include "widget-rmdir.h"
 #include "widget-tail.h"
+#include "widget-zcat.h"
 
 
 //////////////////
@@ -113,6 +114,12 @@ const scu_widget scu_widget_map[] =
       "Writes contents of file to standard out.",     // widget description
       "sectail",                                      // widget alias
       scu_widget_tail,                                // widget function
+   },
+   {
+      "zcat",                                         // widget name
+      "Writes contents of file to standard out.",     // widget description
+      "seczcat",                                      // widget alias
+      scu_widget_zcat,                                // widget function
    },
    { NULL, NULL, NULL, NULL }
 };
