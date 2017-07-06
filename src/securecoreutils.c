@@ -55,6 +55,7 @@
 #include "widget-cat.h"
 #include "widget-pathcheck.h"
 #include "widget-rm.h"
+#include "widget-rmdir.h"
 #include "widget-tail.h"
 
 
@@ -100,6 +101,12 @@ const scu_widget scu_widget_map[] =
       "Removes a file.",                              // widget description
       "secrm",                                        // widget alias
       scu_widget_rm,                                  // widget function
+   },
+   {
+      "rmdir",                                        // widget name
+      "Removes a directory.",                         // widget description
+      "secrmdir",                                     // widget alias
+      scu_widget_rmdir,                               // widget function
    },
    {
       "tail",                                         // widget name

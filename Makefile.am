@@ -102,6 +102,8 @@ src_securecoreutils_SOURCES		= $(include_HEADERS) \
 					  src/widget-pathcheck.h \
 					  src/widget-rm.c \
 					  src/widget-rm.h \
+					  src/widget-rmdir.c \
+					  src/widget-rmdir.h \
 					  src/widget-tail.c \
 					  src/widget-tail.h
 
@@ -124,6 +126,7 @@ install-exec-local:
 	( cd $(DESTDIR)$(bindir); ln -sf securecoreutils sectail; )
 	( cd $(DESTDIR)$(bindir); ln -sf securecoreutils secpath; )
 	( cd $(DESTDIR)$(bindir); ln -sf securecoreutils secrm; )
+	( cd $(DESTDIR)$(bindir); ln -sf securecoreutils secrmdir; )
 
 
 install-data-local:
