@@ -130,7 +130,7 @@ struct scu_widget
 {
    const char        * name;
    const char        * desc;
-   const char        * alias;
+   const char * const * alias;
    int  (*func)(scu_config * cnf);
 };
 

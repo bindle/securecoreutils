@@ -88,37 +88,39 @@ const scu_widget scu_widget_map[] =
    {
       "cat",                                          // widget name
       "Writes contents of file to standard out.",     // widget description
-      "seccat",                                       // widget alias
+      (const char * const[]) { "seccat", NULL },      // widget alias
       scu_widget_cat,                                 // widget function
    },
    {
       "pathcheck",                                    // widget name
       "Validates path using internal checks.",        // widget description
-      "secpath",                                      // widget alias
+      (const char * const[]) { "secpath", NULL },     // widget alias
       scu_widget_pathcheck,                           // widget function
    },
    {
       "rm",                                           // widget name
       "Removes a file.",                              // widget description
-      "secrm",                                        // widget alias
+      (const char * const[]) { "secrm", NULL },       // widget alias
       scu_widget_rm,                                  // widget function
    },
    {
       "rmdir",                                        // widget name
       "Removes a directory.",                         // widget description
-      "secrmdir",                                     // widget alias
+      (const char * const[]) { "secrmdir", NULL },    // widget alias
       scu_widget_rmdir,                               // widget function
    },
    {
       "tail",                                         // widget name
       "Writes contents of file to standard out.",     // widget description
-      "sectail",                                      // widget alias
+      (const char * const[]) { "sectail", NULL },     // widget alias
       scu_widget_tail,                                // widget function
    },
    {
       "zcat",                                         // widget name
-      "Writes contents of file to standard out.",     // widget description
-      "seczcat",                                      // widget alias
+      "Uncompresses file and write to standard out.", // widget description
+      (const char * const[]) { "bzcat", "gzcat",
+         "xzcat", "seczcat", "secbzcat", "secgzcat",
+         "secxzcat", NULL },                          // widget alias
       scu_widget_zcat,                                // widget function
    },
    { NULL, NULL, NULL, NULL }
@@ -308,8 +310,8 @@ int scu_pathcheck(const char * path, int isdir)
 
 void scu_usage(void)
 {
-   int  i;
-   char pair[30];
+   int  x;
+   int  y;
 
    printf("Usage: %s [OPTIONS] widget [WIDGETOPTIONS]\n", PROGRAM_NAME);
    printf("       widget [OPTIONS]\n");
@@ -319,16 +321,24 @@ void scu_usage(void)
    printf("\n");
 
    printf("WIDGETS:\n");
-   for (i = 0; scu_widget_map[i].name; i++)
+   for (x = 0; scu_widget_map[x].name; x++)
    {
-      if (scu_widget_map[i].func != NULL)
-      {
-         if (scu_widget_map[i].alias != NULL)
-            snprintf(pair, 29, "%s, %s", scu_widget_map[i].name, scu_widget_map[i].alias);
-         else
-            snprintf(pair, 29, "%s", scu_widget_map[i].name);
-         printf("   %-24s %s\n", pair, scu_widget_map[i].desc);
-      };
+      if (scu_widget_map[x].func == NULL)
+         continue;
+      printf("   %-24s %s\n", scu_widget_map[x].name, scu_widget_map[x].desc);
+   };
+   printf("\n");
+
+   printf("WIDGET ALIASES:\n");
+   for (x = 0; scu_widget_map[x].name; x++)
+   {
+      if (scu_widget_map[x].func == NULL)
+         continue;
+      if (scu_widget_map[x].alias == NULL)
+         continue;
+      printf("   %-24s %s\n", scu_widget_map[x].name, scu_widget_map[x].alias[0]);
+      for (y = 1; scu_widget_map[x].alias[y] != NULL; y++)
+         printf("      %-21s %s\n", " ", scu_widget_map[x].alias[y]);
    };
    printf("\n");
 
@@ -375,41 +385,74 @@ void scu_version(void)
 
 const scu_widget * scu_widget_lookup(const char * wname, int exact)
 {
-   int                i;
+   int                x;
+   int                y;
+   int                z;
+   int                prefix_uniq;
+   int                prefix_common;
+   const scu_widget * matched_widget;
    const scu_widget * widget;
 
    assert(wname != NULL);
 
-   widget = NULL;
-   for(i = 0; scu_widget_map[i].name != NULL; i++)
+   matched_widget = NULL;
+   prefix_uniq    = -1;
+   prefix_common  = -1;
+
+   for(x = 0; scu_widget_map[x].name != NULL; x++)
    {
-      if (scu_widget_map[i].func == NULL)
+      widget = &scu_widget_map[x];
+
+      // skip place holders
+      if (widget->func == NULL)
          continue;
 
-      if (strcasecmp(wname, scu_widget_map[i].name) != 0)
+      // compares widget name
+      if (strcmp(widget->name, wname) == 0)
+         return(widget);
+      for(z = 0; ( (widget->name[z] != '\0') &&
+                   (wname[z] != '\0') &&
+                   (widget->name[z] == wname[z]) ); z++)
       {
-         if (scu_widget_map[i].alias == NULL)
-            continue;
-         else if (strcasecmp(wname, scu_widget_map[i].alias) != 0)
-            continue;
+         if (z > prefix_uniq)
+         {
+            matched_widget = widget;
+            prefix_uniq    = z;
+         }
+         else if (z == prefix_uniq)
+         {
+            prefix_common = z;
+         };
       };
 
-      if (strcasecmp(scu_widget_map[i].name, wname) == 0)
-         return(&scu_widget_map[i]);
-      if (scu_widget_map[i].alias != NULL)
-         if (strcasecmp(scu_widget_map[i].alias, wname) == 0)
-            return(&scu_widget_map[i]);
-
-      if (widget != NULL)
-         return(NULL);
-
-      widget = &scu_widget_map[i];
+      // compares widget aliases
+      if (!(widget->alias))
+         continue;
+      for(y = 0; widget->alias[y]; y++)
+      {
+         if (strcmp(widget->alias[y], wname) == 0)
+            return(widget);
+         for(z = 0; ( (widget->alias[y][z] != '\0') &&
+                      (wname[z] != '\0') &&
+                      (widget->alias[y][z] == wname[z]) ); z++)
+         {
+            if (z > prefix_uniq)
+            {
+               matched_widget = widget;
+               prefix_uniq    = z;
+            }
+            else if (z == prefix_uniq)
+            {
+               prefix_common = z;
+            };
+         };
+      };
    };
 
-   if (exact == 1)
+   if (prefix_common >= prefix_uniq)
       return(NULL);
 
-   return(widget);
+   return(matched_widget);
 }
 
 
