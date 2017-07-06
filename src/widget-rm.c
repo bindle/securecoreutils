@@ -108,7 +108,7 @@ int scu_widget_rm(scu_config * cnf)
          break;
 
          case 'h':
-         scu_widget_rm_usage();
+         scu_widget_rm_usage(cnf);
          return(0);
 
          case 'i':
@@ -224,11 +224,9 @@ int scu_widget_rm(scu_config * cnf)
 }
 
 
-void scu_widget_rm_usage(void)
+void scu_widget_rm_usage(scu_config * cnf)
 {
-   printf("Usage: %s rm [OPTIONS] file\n", PROGRAM_NAME);
-   printf("       rm [OPTIONS] file\n");
-   printf("       secrm [OPTIONS] file\n");
+   scu_usage_summary(cnf, " [OPTIONS] file");
    printf("\n");
    scu_usage_options();
    printf("  -i                        prompt for confirmation\n");

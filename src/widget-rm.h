@@ -62,6 +62,6 @@
 
 int scu_widget_rm(scu_config * cnf);
 
-void scu_widget_rm_usage(void);
+void scu_widget_rm_usage(scu_config * cnf);
 
 #endif /* end of header */

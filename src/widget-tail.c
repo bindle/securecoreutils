@@ -130,7 +130,7 @@ int scu_widget_tail(scu_config * cnf)
 
 
          case 'h':
-         scu_widget_tail_usage();
+         scu_widget_tail_usage(cnf);
          return(0);
 
 
@@ -465,11 +465,9 @@ int scu_widget_tail_lines(scu_config * cnf, int fd, struct stat * sb,
 }
 
 
-void scu_widget_tail_usage(void)
+void scu_widget_tail_usage(scu_config * cnf)
 {
-   printf("Usage: %s tail [OPTIONS] file\n", PROGRAM_NAME);
-   printf("       tail [OPTIONS] file\n");
-   printf("       sectail [OPTIONS] file\n");
+   scu_usage_summary(cnf, " [OPTIONS] file");
    printf("\n");
    scu_usage_options();
    printf("  -c, --bytes=X             output the last X bytes\n");

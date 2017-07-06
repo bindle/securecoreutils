@@ -156,6 +156,12 @@ int main(int argc, char * argv[])
 
    memset(&cnf, 0, sizeof(scu_config));
 
+   if ((cnf.prog_name = strdup(PROGRAM_NAME)) == NULL)
+   {
+      fprintf(stderr, "%s: out of virtual memory\n", PROGRAM_NAME);
+      return(1);
+   };
+
    // skip argument processing if called via alias
    if ((cnf.widget = scu_widget_lookup(scu_basename(argv[0]), 1)) != NULL)
    {
@@ -370,6 +376,27 @@ void scu_usage_restrictions(void)
    printf("   File path may not contain \"..\", \"./\", \"/.\", or \"//\".\n");
    return;
 }
+
+
+void scu_usage_summary(scu_config * cnf, const char * suffix)
+{
+   int x;
+
+   suffix = (suffix == NULL) ? "" : suffix;
+
+   printf("Usage: %s %s%s\n", cnf->prog_name, cnf->widget->name, suffix);
+   if (cnf->widget->alias)
+      for(x = 0; (cnf->widget->alias[x] != NULL); x++)
+         printf("       %s %s%s\n", cnf->prog_name, cnf->widget->alias[x], suffix);
+
+   printf("       %s%s\n", cnf->widget->name, suffix);
+
+   if (cnf->widget->alias)
+      for(x = 0; (cnf->widget->alias[x] != NULL); x++)
+         printf("       %s%s\n", cnf->widget->alias[x], suffix);
+
+   return;
+};
 
 
 void scu_version(void)

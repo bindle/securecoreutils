@@ -123,7 +123,7 @@ int scu_widget_zcat(scu_config * cnf)
          break;
 
          case 'h':
-         scu_widget_zcat_usage();
+         scu_widget_zcat_usage(cnf);
          return(0);
 
          case 's':
@@ -321,11 +321,9 @@ int scu_widget_zcat_prog(scu_config * cnf, const char * prog)
 }
 
 
-void scu_widget_zcat_usage(void)
+void scu_widget_zcat_usage(scu_config * cnf)
 {
-   printf("Usage: %s zcat [OPTIONS] file\n", PROGRAM_NAME);
-   printf("       zcat [OPTIONS] file\n");
-   printf("       seczcat [OPTIONS] file\n");
+   scu_usage_summary(cnf, " [OPTIONS] file");
    printf("\n");
    scu_usage_options();
    printf("\n");

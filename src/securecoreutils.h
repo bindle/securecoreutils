@@ -121,6 +121,7 @@ struct scu_config
    int                  verbose;
    int                  opt_index;
    int                  argc;
+   char               * prog_name;
    char              ** argv;
    const scu_widget   * widget;
 };
@@ -151,6 +152,8 @@ int scu_pathcheck(const char * path, int isdir);
 void scu_usage(void);
 void scu_usage_options(void);
 void scu_usage_restrictions(void);
+void scu_usage_summary(scu_config * cnf, const char * suffix);
+
 
 const char * scu_strerror(int err);
 

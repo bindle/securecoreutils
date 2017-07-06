@@ -65,6 +65,6 @@ int scu_widget_zcat_bz2(scu_config * cnf);
 int scu_widget_zcat_gz(scu_config * cnf);
 int scu_widget_zcat_prog(scu_config * cnf, const char * prog);
 
-void scu_widget_zcat_usage(void);
+void scu_widget_zcat_usage(scu_config * cnf);
 
 #endif /* end of header */

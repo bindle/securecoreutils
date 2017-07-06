@@ -62,6 +62,6 @@
 
 int scu_widget_rmdir(scu_config * cnf);
 
-void scu_widget_rmdir_usage(void);
+void scu_widget_rmdir_usage(scu_config * cnf);
 
 #endif /* end of header */

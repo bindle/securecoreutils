@@ -91,7 +91,7 @@ int scu_widget_rmdir(scu_config * cnf)
          break;
 
          case 'h':
-         scu_widget_rmdir_usage();
+         scu_widget_rmdir_usage(cnf);
          return(0);
 
          case 's':
@@ -176,11 +176,9 @@ int scu_widget_rmdir(scu_config * cnf)
 }
 
 
-void scu_widget_rmdir_usage(void)
+void scu_widget_rmdir_usage(scu_config * cnf)
 {
-   printf("Usage: %s rmdir [OPTIONS] file\n", PROGRAM_NAME);
-   printf("       rmdir [OPTIONS] file\n");
-   printf("       secrmdir [OPTIONS] file\n");
+   scu_usage_summary(cnf, " [OPTIONS] file");;
    printf("\n");
    scu_usage_options();
    printf("  -i                        prompt for confirmation\n");

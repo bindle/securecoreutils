@@ -93,7 +93,7 @@ int scu_widget_cat(scu_config * cnf)
          break;
 
          case 'h':
-         scu_widget_cat_usage();
+         scu_widget_cat_usage(cnf);
          return(0);
 
          case 's':
@@ -201,11 +201,9 @@ int scu_widget_cat(scu_config * cnf)
 }
 
 
-void scu_widget_cat_usage(void)
+void scu_widget_cat_usage(scu_config * cnf)
 {
-   printf("Usage: %s cat [OPTIONS] file\n", PROGRAM_NAME);
-   printf("       cat [OPTIONS] file\n");
-   printf("       seccat [OPTIONS] file\n");
+   scu_usage_summary(cnf, " [OPTIONS] file");
    printf("\n");
    scu_usage_options();
    printf("\n");

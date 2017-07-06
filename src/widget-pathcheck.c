@@ -92,7 +92,7 @@ int scu_widget_pathcheck(scu_config * cnf)
          break;
 
          case 'h':
-         scu_widget_pathcheck_usage();
+         scu_widget_pathcheck_usage(cnf);
          return(0);
 
          case 's':
@@ -154,10 +154,9 @@ int scu_widget_pathcheck(scu_config * cnf)
 }
 
 
-void scu_widget_pathcheck_usage(void)
+void scu_widget_pathcheck_usage(scu_config * cnf)
 {
-   printf("Usage: %s pathcheck [OPTIONS] file\n", PROGRAM_NAME);
-   printf("       pathcheck [OPTIONS] file\n");
+   scu_usage_summary(cnf, " [OPTIONS] file");
    printf("\n");
    scu_usage_options();
    printf("  -d, --directory           check path for directory instead of file\n");
