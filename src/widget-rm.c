@@ -83,6 +83,7 @@ int scu_widget_rm(scu_config * cnf)
       {"silent",           no_argument,       NULL, 'q' },
       {"version",          no_argument,       NULL, 'V' },
       {"verbose",          no_argument,       NULL, 'v' },
+      {"force",            no_argument,       NULL, 'f' },
       { NULL, 0, NULL, 0 }
    };
 
