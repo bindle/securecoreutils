@@ -100,6 +100,7 @@
 #define SCU_EPATH    2
 #define SCU_EFILE    3
 #define SCU_EANCHOR  4
+#define SCU_EDIR     5
 
 
 //////////////////
@@ -144,7 +145,7 @@ struct scu_widget
 #endif
 
 /// checks paths
-int scu_pathcheck(const char * path);
+int scu_pathcheck(const char * path, int isdir);
 
 /// Displays secure core utils wrapper usage
 void scu_usage(void);

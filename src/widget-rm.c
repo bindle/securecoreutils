@@ -172,7 +172,7 @@ int scu_widget_rm(scu_config * cnf)
       fprintf(stderr, "%s: %s: %s\n", PROGRAM_NAME, cnf->widget->name, strerror(errno));
       return(1);
    };
-   if ((rc = scu_pathcheck(cnf->argv[optind])) != 0)
+   if ((rc = scu_pathcheck(cnf->argv[optind], 0)) != 0)
    {
       fprintf(stderr, "%s: %s: %s\n", PROGRAM_NAME, cnf->widget->name, scu_strerror(rc));
       return(1);

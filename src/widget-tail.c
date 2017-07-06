@@ -242,7 +242,7 @@ int scu_widget_tail(scu_config * cnf)
       return(1);
    };
 
-   if ((rc = scu_pathcheck(cnf->argv[optind])) != 0)
+   if ((rc = scu_pathcheck(cnf->argv[optind], 0)) != 0)
    {
       fprintf(stderr, "%s: %s: %s\n", PROGRAM_NAME, cnf->widget->name, scu_strerror(rc));
       return(1);

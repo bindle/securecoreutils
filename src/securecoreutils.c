@@ -227,7 +227,7 @@ const char * scu_basename(const char * path)
 
 
 /// checks paths
-int scu_pathcheck(const char * path)
+int scu_pathcheck(const char * path, int isdir)
 {
    int            c;
    size_t         s;
@@ -246,7 +246,7 @@ int scu_pathcheck(const char * path)
 
    // verify path does not end in slash
    if (path[s-1] == '/')
-      return(SCU_EFILE);
+      return(SCU_EPATH);
 
    // verify there are no adjacent
    for(p = 1; p < s; p++)
@@ -259,8 +259,12 @@ int scu_pathcheck(const char * path)
    // verify file is not a symbolic link
    if ((c = lstat(path, &sb)) == -1)
       return(SCU_ERRNO);
-   if ((sb.st_mode & S_IFMT) != S_IFREG)
-      return(SCU_EFILE);
+   if (isdir == 0)
+      if ((sb.st_mode & S_IFMT) != S_IFREG)
+         return(SCU_EFILE);
+   if (isdir != 0)
+      if ((sb.st_mode & S_IFMT) != S_IFDIR)
+         return(SCU_EDIR);
 
    // check path for symlinks
    if ((str = strdup(path)) == NULL)
@@ -335,9 +339,9 @@ void scu_usage_options(void)
 void scu_usage_restrictions(void)
 {
    printf("RESTRICTIONS:\n");
+   printf("   File path must be a regular file or directory.\n");
    printf("   File path must begin with a '/' character.\n");
    printf("   File path may not end with a '/' character.\n");
-   printf("   File path may not be a symlink.\n");
    printf("   File path may not contain a symlink as part of the path.\n");
    printf("   File path may not contain \"..\", \"./\", \"/.\", or \"//\".\n");
    return;
