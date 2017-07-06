@@ -54,6 +54,7 @@
 
 #include "widget-cat.h"
 #include "widget-pathcheck.h"
+#include "widget-rm.h"
 #include "widget-tail.h"
 
 
@@ -93,6 +94,12 @@ const scu_widget scu_widget_map[] =
       "Validates path using internal checks.",        // widget description
       "secpath",                                      // widget alias
       scu_widget_pathcheck,                           // widget function
+   },
+   {
+      "rm",                                           // widget name
+      "Removes a file.",                              // widget description
+      "secrm",                                        // widget alias
+      scu_widget_rm,                                  // widget function
    },
    {
       "tail",                                         // widget name

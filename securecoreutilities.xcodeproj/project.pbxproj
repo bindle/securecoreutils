@@ -22,6 +22,7 @@
 
 /* Begin PBXBuildFile section */
 		A005C1831EC8C6BD00A08403 /* widget-tail.c in Sources */ = {isa = PBXBuildFile; fileRef = A005C1811EC8BDAF00A08403 /* widget-tail.c */; };
+		A0446A211F0DABB4000085C7 /* widget-rm.c in Sources */ = {isa = PBXBuildFile; fileRef = A0446A1F1F0DA0F3000085C7 /* widget-rm.c */; };
 		A054C3DD1B0292930036591C /* securecoreutils.c in Sources */ = {isa = PBXBuildFile; fileRef = A054C3D71B0292930036591C /* securecoreutils.c */; };
 		A054C3DE1B0292930036591C /* widget-cat.c in Sources */ = {isa = PBXBuildFile; fileRef = A054C3D91B0292930036591C /* widget-cat.c */; };
 		A054C3DF1B0292930036591C /* widget-pathcheck.c in Sources */ = {isa = PBXBuildFile; fileRef = A054C3DB1B0292930036591C /* widget-pathcheck.c */; };
@@ -52,6 +53,8 @@
 /* Begin PBXFileReference section */
 		A005C1811EC8BDAF00A08403 /* widget-tail.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "widget-tail.c"; sourceTree = "<group>"; };
 		A005C1821EC8BDAF00A08403 /* widget-tail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "widget-tail.h"; sourceTree = "<group>"; };
+		A0446A1F1F0DA0F3000085C7 /* widget-rm.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "widget-rm.c"; sourceTree = "<group>"; };
+		A0446A201F0DA0F3000085C7 /* widget-rm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "widget-rm.h"; sourceTree = "<group>"; };
 		A054C3A51B0292600036591C /* securecoreutilities */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = securecoreutilities; sourceTree = BUILT_PRODUCTS_DIR; };
 		A054C3AD1B0292930036591C /* acinclude.m4 */ = {isa = PBXFileReference; explicitFileType = text.script; fileEncoding = 4; path = acinclude.m4; sourceTree = "<group>"; };
 		A054C3AE1B0292930036591C /* AUTHORS */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = AUTHORS; sourceTree = "<group>"; };
@@ -145,6 +148,8 @@
 				A054C3DA1B0292930036591C /* widget-cat.h */,
 				A054C3DB1B0292930036591C /* widget-pathcheck.c */,
 				A054C3DC1B0292930036591C /* widget-pathcheck.h */,
+				A0446A1F1F0DA0F3000085C7 /* widget-rm.c */,
+				A0446A201F0DA0F3000085C7 /* widget-rm.h */,
 				A005C1811EC8BDAF00A08403 /* widget-tail.c */,
 				A005C1821EC8BDAF00A08403 /* widget-tail.h */,
 			);
@@ -232,6 +237,7 @@
 				A005C1831EC8C6BD00A08403 /* widget-tail.c in Sources */,
 				A054C3DF1B0292930036591C /* widget-pathcheck.c in Sources */,
 				A054C3DD1B0292930036591C /* securecoreutils.c in Sources */,
+				A0446A211F0DABB4000085C7 /* widget-rm.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
