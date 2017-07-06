@@ -130,6 +130,9 @@ install-exec-local:
 	( cd $(DESTDIR)$(bindir); ln -sf securecoreutils secrmdir; )
 	( cd $(DESTDIR)$(bindir); ln -sf securecoreutils sectail; )
 	( cd $(DESTDIR)$(bindir); ln -sf securecoreutils seczcat; )
+	( cd $(DESTDIR)$(bindir); ln -sf securecoreutils secbzcat; )
+	( cd $(DESTDIR)$(bindir); ln -sf securecoreutils secgzcat; )
+	( cd $(DESTDIR)$(bindir); ln -sf securecoreutils secxzcat; )
 
 
 install-data-local:
