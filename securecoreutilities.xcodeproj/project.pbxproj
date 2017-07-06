@@ -27,6 +27,7 @@
 		A0446A271F0DDF83000085C7 /* widget-zcat.c in Sources */ = {isa = PBXBuildFile; fileRef = A0446A251F0DDF78000085C7 /* widget-zcat.c */; };
 		A0446A2F1F0DFAEB000085C7 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = A0446A2E1F0DFAEB000085C7 /* libz.tbd */; };
 		A0446A311F0E1EAA000085C7 /* libbz2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = A0446A301F0E1EAA000085C7 /* libbz2.tbd */; };
+		A0446A351F0EF634000085C7 /* liblzma.5.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A0446A341F0EF634000085C7 /* liblzma.5.dylib */; };
 		A054C3DD1B0292930036591C /* securecoreutils.c in Sources */ = {isa = PBXBuildFile; fileRef = A054C3D71B0292930036591C /* securecoreutils.c */; };
 		A054C3DE1B0292930036591C /* widget-cat.c in Sources */ = {isa = PBXBuildFile; fileRef = A054C3D91B0292930036591C /* widget-cat.c */; };
 		A054C3DF1B0292930036591C /* widget-pathcheck.c in Sources */ = {isa = PBXBuildFile; fileRef = A054C3DB1B0292930036591C /* widget-pathcheck.c */; };
@@ -67,6 +68,8 @@
 		A0446A2B1F0DF1D5000085C7 /* TODO */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = TODO; sourceTree = "<group>"; };
 		A0446A2E1F0DFAEB000085C7 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		A0446A301F0E1EAA000085C7 /* libbz2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libbz2.tbd; path = usr/lib/libbz2.tbd; sourceTree = SDKROOT; };
+		A0446A321F0EF50A000085C7 /* liblzma.5.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = liblzma.5.dylib; path = ../../../../../opt/local/lib/liblzma.5.dylib; sourceTree = "<group>"; };
+		A0446A341F0EF634000085C7 /* liblzma.5.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = liblzma.5.dylib; path = ../../../../../opt/devel/lib/liblzma.5.dylib; sourceTree = "<group>"; };
 		A054C3A51B0292600036591C /* securecoreutilities */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = securecoreutilities; sourceTree = BUILT_PRODUCTS_DIR; };
 		A054C3AD1B0292930036591C /* acinclude.m4 */ = {isa = PBXFileReference; explicitFileType = text.script; fileEncoding = 4; path = acinclude.m4; sourceTree = "<group>"; };
 		A054C3AE1B0292930036591C /* AUTHORS */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = AUTHORS; sourceTree = "<group>"; };
@@ -93,6 +96,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A0446A351F0EF634000085C7 /* liblzma.5.dylib in Frameworks */,
 				A0446A311F0E1EAA000085C7 /* libbz2.tbd in Frameworks */,
 				A0446A2F1F0DFAEB000085C7 /* libz.tbd in Frameworks */,
 			);
@@ -104,6 +108,8 @@
 		A0446A2D1F0DFAEB000085C7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A0446A341F0EF634000085C7 /* liblzma.5.dylib */,
+				A0446A321F0EF50A000085C7 /* liblzma.5.dylib */,
 				A0446A301F0E1EAA000085C7 /* libbz2.tbd */,
 				A0446A2E1F0DFAEB000085C7 /* libz.tbd */,
 			);
@@ -302,6 +308,7 @@
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"USE_ZLIB=1",
 					"USE_BZIP2=1",
+					"USE_XZ=1",
 				);
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
@@ -313,6 +320,7 @@
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					include,
+					/opt/devel/include,
 				);
 				ONLY_ACTIVE_ARCH = YES;
 			};
@@ -335,6 +343,7 @@
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"USE_ZLIB=1",
 					"USE_BZIP2=1",
+					"USE_XZ=1",
 				);
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
@@ -346,6 +355,7 @@
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					include,
+					/opt/devel/include,
 				);
 			};
 			name = Release;
@@ -395,6 +405,11 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					/opt/local/lib,
+					/opt/devel/lib,
+				);
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -432,6 +447,11 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					/opt/local/lib,
+					/opt/devel/lib,
+				);
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";

@@ -49,7 +49,7 @@ AC_DEFUN([AC_SCU_ZCAT_DEPS],[dnl
       AC_DEFINE_UNQUOTED(USE_ZLIB, 1, [Use zlib])
    fi
 
-   # check bzip2
+   # check libbz2
    USE_BZIP2=yes;
    AC_CHECK_HEADERS([bzlib.h],                   [], [USE_BZIP2=no])
    AC_SEARCH_LIBS([BZ2_bzRead],           [bz2], [], [USE_BZIP2=no])
@@ -60,9 +60,13 @@ AC_DEFUN([AC_SCU_ZCAT_DEPS],[dnl
       AC_DEFINE_UNQUOTED(USE_BZIP2, 1, [Use bzip2])
    fi
 
-   AC_CHECK_PROG([USE_XZ], [xz], [yes], [no])
+   # check liblzma
+   USE_XZ=yes;
+   AC_CHECK_HEADERS([lzma.h],                     [], [USE_XZ=no])
+   AC_SEARCH_LIBS([lzma_stream_decoder],  [lzma], [], [USE_XZ=no])
+   AC_SEARCH_LIBS([lzma_code],            [lzma], [], [USE_XZ=no])
    if test "x${USE_XZ}" = "xyes";then
-      AC_DEFINE_UNQUOTED(USE_XZ, 1, [Use xz])
+      AC_DEFINE_UNQUOTED(USE_XZ, 1, [Use liblzma])
    fi
 
    AC_CHECK_PROG([USE_Z], [uncompress], [yes], [no])

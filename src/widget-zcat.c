@@ -63,6 +63,10 @@
 #include <bzlib.h>
 #endif
 
+#ifdef USE_XZ
+#include <lzma.h>
+#endif
+
 
 /////////////////
 //             //
@@ -76,6 +80,20 @@ const uint8_t scm_magic_lz4[4]   = { 0x04, 0x22, 0x4d, 0x18 };             // ta
 const uint8_t scm_magic_z_lzw[2] = { 0x1f, 0x9d };                         // tar.Z
 const uint8_t scm_magic_z_lzh[2] = { 0x1f, 0xa0 };                         // tar.Z
 const uint8_t scm_magic_xz[6]    = { 0xfd, 0x37, 0x7a, 0x58, 0x5a, 0x00 }; // tar.xz
+
+
+//////////////////
+//              //
+//  Prototypes  //
+//              //
+//////////////////
+#ifdef __TALLYMARK_PMARK
+#pragma mark -
+#endif
+
+#ifdef USE_XZ
+int scu_widget_zcat_xz_perror(scu_config * cnf, lzma_ret ret);
+#endif
 
 
 /////////////////
@@ -210,7 +228,7 @@ int scu_widget_zcat(scu_config * cnf)
 
 #ifdef USE_XZ
    if (!( memcmp(magic, scm_magic_xz, sizeof(scm_magic_xz)) ))
-      return(scu_widget_zcat_prog(cnf, "xz -cd"));
+      return(scu_widget_zcat_xz(cnf));
 #endif
 
 #ifdef USE_Z
@@ -331,5 +349,147 @@ void scu_widget_zcat_usage(scu_config * cnf)
    printf("\n");
    return;
 }
+
+
+#ifdef USE_XZ
+int scu_widget_zcat_xz(scu_config * cnf)
+{
+   int            fd;
+   lzma_ret       ret;
+   lzma_stream    strm;
+   lzma_action    action;
+   uint8_t        in[16384];
+   uint8_t        out[16384];
+   size_t         len;
+
+   bzero(&strm, sizeof(strm));
+   action         = LZMA_RUN;
+   strm.next_in   = in;
+   strm.next_out  = out;
+   strm.avail_in  = 0;
+   strm.avail_out = sizeof(out);
+
+   if ((fd = open(cnf->argv[optind], O_RDONLY)) == -1)
+   {
+      fprintf(stderr, "%s: %s: %s\n", cnf->prog_name, cnf->widget->name, strerror(errno));
+      return(1);
+   };
+
+   if ((ret = lzma_stream_decoder(&strm, UINT64_MAX, LZMA_CONCATENATED)) != LZMA_OK)
+   {
+      scu_widget_zcat_xz_perror(cnf, ret);
+      close(fd);
+      return(1);
+   };
+
+
+   while (action == LZMA_RUN)
+   {
+      // read from compressed file
+      strm.next_in = in;
+      if (strm.avail_in != sizeof(in))
+      {
+         if ((len = read(fd, &in[strm.avail_in], (sizeof(in) - strm.avail_in))) == -1)
+         {
+            fprintf(stderr, "%s: %s: %s\n", cnf->prog_name, cnf->widget->name, strerror(errno));
+            close(fd);
+            return(1);
+         };
+         if (len == 0)
+            action = LZMA_FINISH;
+         else
+            strm.avail_in += len;
+      };
+
+      // uncompress file
+      if ((ret = lzma_code(&strm, action)) != LZMA_OK)
+      {
+         if (ret != LZMA_STREAM_END)
+         {
+            scu_widget_zcat_xz_perror(cnf, ret);
+            close(fd);
+            return(1);
+         };
+      };
+
+      // print uncompressed data
+      if (strm.avail_out == sizeof(out))
+         continue;
+      if ((len = write(STDOUT_FILENO, out, (sizeof(out) - strm.avail_out))) == -1)
+      {
+         fprintf(stderr, "%s: %s: %s\n", cnf->prog_name, cnf->widget->name, strerror(errno));
+         close(fd);
+         return(1);
+      };
+      strm.avail_out += len;
+   };
+
+   close(fd);
+
+   // finish uncompressing data
+   while ( (ret != LZMA_OK) && (ret != LZMA_STREAM_END))
+   {
+      // uncompress remaining data in buffer
+      if ((ret = lzma_code(&strm, action)) != LZMA_OK)
+      {
+         if (ret != LZMA_STREAM_END)
+         {
+            scu_widget_zcat_xz_perror(cnf, ret);
+            return(1);
+         };
+      };
+
+      // print uncompressed data
+      if (strm.avail_out == sizeof(out))
+         continue;
+      if ((len = write(STDOUT_FILENO, out, (sizeof(out) - strm.avail_out))) == -1)
+      {
+         fprintf(stderr, "%s: %s: %s\n", cnf->prog_name, cnf->widget->name, strerror(errno));
+         close(fd);
+         return(1);
+      };
+      strm.avail_out += len;
+   };
+
+   return(0);
+}
+
+
+int scu_widget_zcat_xz_perror(scu_config * cnf, lzma_ret ret)
+{
+   switch(ret)
+   {
+      case LZMA_BUF_ERROR:
+      fprintf(stderr, "%s: %s: truncated or corrupt file\n", cnf->prog_name, cnf->widget->name);
+      return(1);
+
+      case LZMA_DATA_ERROR:
+      fprintf(stderr, "%s: %s: compressed file is corrupt\n", cnf->prog_name, cnf->widget->name);
+      return(1);
+
+      case LZMA_FORMAT_ERROR:
+      fprintf(stderr, "%s: %s: invalid .xz format\n", cnf->prog_name, cnf->widget->name);
+      return(1);
+
+      case LZMA_MEM_ERROR:
+      fprintf(stderr, "%s: %s: out of virtual memory\n", cnf->prog_name, cnf->widget->name);
+      return(1);
+
+      case LZMA_OPTIONS_ERROR:
+      fprintf(stderr, "%s: %s: unsupported LZMA options\n", cnf->prog_name, cnf->widget->name);
+      return(1);
+
+      case LZMA_STREAM_END:
+      fprintf(stderr, "%s: %s: end of LZMA stream\n", cnf->prog_name, cnf->widget->name);
+      return(0);
+
+      default:
+      fprintf(stderr, "%s: %s: unknown LZMA error\n", cnf->prog_name, cnf->widget->name);
+      break;
+
+   };
+   return(1);
+}
+#endif
 
 /* end of source */
