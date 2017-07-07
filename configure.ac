@@ -182,7 +182,7 @@ AC_MSG_NOTICE([   Secure Core Utilities $GIT_PACKAGE_VERSION ($GIT_PACKAGE_BUILD
 AC_MSG_NOTICE([ ])
 AC_MSG_NOTICE([   Features:])
 if test "x${SCU_TAIL_TIMEOUT}" = "x0";then
-   AC_MSG_NOTICE([      tail timeout:              none)])
+   AC_MSG_NOTICE([      tail timeout:              none])
 else
    AC_MSG_NOTICE([      tail timeout:              $SCU_TAIL_TIMEOUT seconds])
 fi
