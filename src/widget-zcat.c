@@ -111,7 +111,6 @@ int scu_widget_zcat(scu_config * cnf)
    int            c;
    int            opt_index;
    int            rc;
-   int            type;
    uint8_t        magic[16];
    ssize_t        len;
 
@@ -129,7 +128,6 @@ int scu_widget_zcat(scu_config * cnf)
 
    assert(cnf != NULL);
 
-   type = 0;
    bzero(magic, sizeof(magic));
 
    while((c = getopt_long(cnf->argc, cnf->argv, short_opt, long_opt, &opt_index)) != -1)
