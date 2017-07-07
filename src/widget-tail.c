@@ -313,7 +313,6 @@ int scu_widget_tail_bytes(scu_config * cnf, int fd, struct stat * sb,
       return(-1);
    };
 
-   len = 1;
    while ((len = read(fd, buff, sizeof(buff))) > 0)
    {
       if ((len = write(STDOUT_FILENO, buff, len)) == -1)
@@ -379,7 +378,6 @@ int scu_widget_tail_lines(scu_config * cnf, int fd, struct stat * sb,
    {
       len         = 1;
       linecount   = 1;
-      pos         = 0;
 
       while ((linecount < optnum) && (len > 0))
       {
@@ -451,7 +449,6 @@ int scu_widget_tail_lines(scu_config * cnf, int fd, struct stat * sb,
       };
    };
 
-   len = 1;
    while ((len = read(fd, buff, sizeof(buff))) > 0)
    {
       if ((len = write(STDOUT_FILENO, buff, len)) == -1)
