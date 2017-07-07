@@ -34,6 +34,29 @@
 #   acinclude.m4 - custom m4 macros used by configure.ac
 #
 
+# AC_SCU_PREFIX
+# ______________________________________________________________________________
+AC_DEFUN([AC_SCU_PREFIX],[dnl
+
+   withval=""
+   AC_ARG_WITH(
+      widget-prefix,
+      [AS_HELP_STRING([--with-widget-prefix=string], [create aliases by adding prefix to widget name [default: sec]])],
+      [ WSCU_PREFIX=$withval ],
+      [ WSCU_PREFIX=$withval ]
+   )
+
+   if test "x${WSCU_PREFIX}" == "xyes" || \
+      test "x${WSCU_PREFIX}" == "xno" || \
+      test "x${WSCU_PREFIX}" == "x";then
+      WSCU_PREFIX="sec"
+   fi
+   SCU_PREFIX=${WSCU_PREFIX}
+
+   AC_DEFINE_UNQUOTED(SCU_PREFIX, ["${SCU_PREFIX}"], [Prefix for widget aliases.])
+])dnl
+
+
 # AC_SCU_WIDGET_TAIL
 # ______________________________________________________________________________
 AC_DEFUN([AC_SCU_WIDGET_TAIL],[dnl

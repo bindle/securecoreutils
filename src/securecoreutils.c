@@ -60,6 +60,16 @@
 #include "widget-zcat.h"
 
 
+///////////////////
+//               //
+//  Definitions  //
+//               //
+///////////////////
+
+#undef _PREFIX
+#define _PREFIX SCU_PREFIX
+
+
 //////////////////
 //              //
 //  Prototypes  //
@@ -88,45 +98,45 @@ const scu_widget scu_widget_map[] =
    {
       "cat",                                          // widget name
       "Writes contents of file to standard out.",     // widget description
-      (const char * const[]) { "seccat", NULL },      // widget alias
+      (const char * const[]) { _PREFIX"cat", NULL },  // widget alias
       scu_widget_cat,                                 // widget function
    },
    {
       "pathcheck",                                    // widget name
       "Validates path using internal checks.",        // widget description
-      (const char * const[]) { "secpath", NULL },     // widget alias
+      (const char * const[]) { _PREFIX"path", NULL }, // widget alias
       scu_widget_pathcheck,                           // widget function
    },
    {
       "rm",                                           // widget name
       "Removes a file.",                              // widget description
-      (const char * const[]) { "secrm", NULL },       // widget alias
+      (const char * const[]) { _PREFIX"rm", NULL },   // widget alias
       scu_widget_rm,                                  // widget function
    },
    {
       "rmdir",                                        // widget name
       "Removes a directory.",                         // widget description
-      (const char * const[]) { "secrmdir", NULL },    // widget alias
+      (const char * const[]) { _PREFIX"rmdir", NULL },// widget alias
       scu_widget_rmdir,                               // widget function
    },
    {
       "tail",                                         // widget name
       "Writes contents of file to standard out.",     // widget description
-      (const char * const[]) { "sectail", NULL },     // widget alias
+      (const char * const[]) { _PREFIX"tail", NULL }, // widget alias
       scu_widget_tail,                                // widget function
    },
    {
       "zcat",                                         // widget name
       "Uncompresses file and write to standard out.", // widget description
-      (const char * const[]) { "seczcat",
+      (const char * const[]) { _PREFIX"zcat",
 #ifdef USE_BZIP2
-         "bzcat", "secbzcat",
+         "bzcat", _PREFIX"bzcat",
 #endif
 #ifdef USE_ZLIB
-         "gzcat", "secgzcat",
+         "gzcat", _PREFIX"gzcat",
 #endif
 #ifdef USE_LZMA
-         "xzcat", "secxzcat",
+         "xzcat", _PREFIX"xzcat",
 #endif
          NULL },                                      // widget alias
       scu_widget_zcat,                                // widget function

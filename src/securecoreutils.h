@@ -90,6 +90,11 @@
 #endif
 
 
+#ifndef SCU_PREFIX
+#define SCU_PREFIX "sec"
+#endif
+
+
 #ifdef LINE_MAX
 #   define SCU_LINE_MAX LINE_MAX
 #elif defined _POSIX2_LINE_MAX
