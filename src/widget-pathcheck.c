@@ -146,7 +146,8 @@ int scu_widget_pathcheck(scu_config * cnf)
 
    if ((rc = scu_pathcheck(cnf->argv[optind], isdir)) != 0)
    {
-      fprintf(stderr, "%s: %s: %s\n", PROGRAM_NAME, cnf->widget->name, scu_strerror(rc));
+      if (!(cnf->quiet))
+         fprintf(stderr, "%s: %s: %s\n", PROGRAM_NAME, cnf->widget->name, scu_strerror(rc));
       return(1);
    };
 
