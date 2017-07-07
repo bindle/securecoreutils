@@ -66,6 +66,11 @@ AC_DEFUN([AC_SCU_WIDGET_TAIL],[dnl
 
    AC_DEFINE_UNQUOTED(SCU_TAIL_TIMEOUT, ${SCU_TAIL_TIMEOUT}, [Timeout value for tail widget])
 
+   if test "x${SCU_TAIL_TIMEOUT}" = "x0";then
+      SCU_TAIL_TIMEOUT=none
+   else
+      SCU_TAIL_TIMEOUT="${SCU_TAIL_TIMEOUT} seconds"
+   fi
 ])dnl
 
 

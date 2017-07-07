@@ -180,12 +180,8 @@ AC_OUTPUT
 AC_MSG_NOTICE([ ])
 AC_MSG_NOTICE([   Secure Core Utilities $GIT_PACKAGE_VERSION ($GIT_PACKAGE_BUILD)])
 AC_MSG_NOTICE([ ])
-AC_MSG_NOTICE([   Features:])
-if test "x${SCU_TAIL_TIMEOUT}" = "x0";then
-   AC_MSG_NOTICE([      tail timeout:              none])
-else
-   AC_MSG_NOTICE([      tail timeout:              $SCU_TAIL_TIMEOUT seconds])
-fi
+AC_MSG_NOTICE([   Options:])
+AC_MSG_NOTICE([      tail timeout:              $SCU_TAIL_TIMEOUT])
 AC_MSG_NOTICE([ ])
 AC_MSG_NOTICE([   Support:])
 AC_MSG_NOTICE([      zlib support:              $USE_ZLIB])
