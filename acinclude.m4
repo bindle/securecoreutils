@@ -54,6 +54,7 @@ AC_DEFUN([AC_SCU_PREFIX],[dnl
    SCU_PREFIX=${WSCU_PREFIX}
 
    AC_DEFINE_UNQUOTED(SCU_PREFIX, ["${SCU_PREFIX}"], [Prefix for widget aliases.])
+   AC_SUBST([SCU_PREFIX], [${SCU_PREFIX}])
 ])dnl
 
 

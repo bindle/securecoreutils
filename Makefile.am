@@ -134,15 +134,15 @@ include $(srcdir)/@bindletools_srcdir@/build-aux/makefile-version.am
 
 # local targets
 install-exec-local:
-	( cd $(DESTDIR)$(bindir); ln -sf securecoreutils seccat; )
-	( cd $(DESTDIR)$(bindir); ln -sf securecoreutils secpath; )
-	( cd $(DESTDIR)$(bindir); ln -sf securecoreutils secrm; )
-	( cd $(DESTDIR)$(bindir); ln -sf securecoreutils secrmdir; )
-	( cd $(DESTDIR)$(bindir); ln -sf securecoreutils sectail; )
-	( cd $(DESTDIR)$(bindir); ln -sf securecoreutils seczcat; )
-	( cd $(DESTDIR)$(bindir); ln -sf securecoreutils secbzcat; )
-	( cd $(DESTDIR)$(bindir); ln -sf securecoreutils secgzcat; )
-	( cd $(DESTDIR)$(bindir); ln -sf securecoreutils secxzcat; )
+	( cd $(DESTDIR)$(bindir); ln -sf securecoreutils $(SCU_PREFIX)cat; )
+	( cd $(DESTDIR)$(bindir); ln -sf securecoreutils $(SCU_PREFIX)path; )
+	( cd $(DESTDIR)$(bindir); ln -sf securecoreutils $(SCU_PREFIX)rm; )
+	( cd $(DESTDIR)$(bindir); ln -sf securecoreutils $(SCU_PREFIX)rmdir; )
+	( cd $(DESTDIR)$(bindir); ln -sf securecoreutils $(SCU_PREFIX)tail; )
+	( cd $(DESTDIR)$(bindir); ln -sf securecoreutils $(SCU_PREFIX)zcat; )
+	( cd $(DESTDIR)$(bindir); ln -sf securecoreutils $(SCU_PREFIX)bzcat; )
+	( cd $(DESTDIR)$(bindir); ln -sf securecoreutils $(SCU_PREFIX)gzcat; )
+	( cd $(DESTDIR)$(bindir); ln -sf securecoreutils $(SCU_PREFIX)xzcat; )
 
 
 install-data-local:
