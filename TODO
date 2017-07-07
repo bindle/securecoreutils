@@ -1,6 +1,3 @@
 Widgets:
    strings
-   zcat
-    - native Z uncompress implementation
-    - native xz decompress implementation
 Documentation
