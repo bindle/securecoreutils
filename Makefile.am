@@ -129,11 +129,9 @@ include $(srcdir)/@bindletools_srcdir@/build-aux/makefile-version.am
 
 
 # custom targets
-.PHONY:
+.PHONY: install-widget-symlinks
 
-
-# local targets
-install-exec-local:
+install-widget-symlinks:
 	( cd $(DESTDIR)$(bindir); ln -sf securecoreutils $(SCU_PREFIX)cat; )
 	( cd $(DESTDIR)$(bindir); ln -sf securecoreutils $(SCU_PREFIX)path; )
 	( cd $(DESTDIR)$(bindir); ln -sf securecoreutils $(SCU_PREFIX)rm; )
@@ -143,7 +141,12 @@ install-exec-local:
 	( cd $(DESTDIR)$(bindir); ln -sf securecoreutils $(SCU_PREFIX)bzcat; )
 	( cd $(DESTDIR)$(bindir); ln -sf securecoreutils $(SCU_PREFIX)gzcat; )
 	( cd $(DESTDIR)$(bindir); ln -sf securecoreutils $(SCU_PREFIX)xzcat; )
+if SCU_SYMLINKS
+INSTALL_SYMLINKS = install-widget-symlinks
+endif
 
+# local targets
+install-exec-local: $(INSTALL_SYMLINKS)
 
 install-data-local:
 

@@ -164,6 +164,7 @@ AC_BINDLE_GIT_PACKAGE_VERSION([contrib/bindletools/build-aux/git-package-version
 # custom configure options
 AC_BINDLE_ENABLE_WARNINGS
 AC_SCU_PREFIX
+AC_SCU_SYMLINKS
 AC_SCU_WIDGET_TAIL
 AC_SCU_WIDGET_ZCAT
 
@@ -182,7 +183,8 @@ AC_MSG_NOTICE([ ])
 AC_MSG_NOTICE([   Secure Core Utilities $GIT_PACKAGE_VERSION ($GIT_PACKAGE_BUILD)])
 AC_MSG_NOTICE([ ])
 AC_MSG_NOTICE([   Options:])
-AC_MSG_NOTICE([      widget prefix:             "${SCU_PREFIX}"])
+AC_MSG_NOTICE([      widget prefix:             ${SCU_PREFIX}])
+AC_MSG_NOTICE([      create symlinks:           ${SCU_SYMLINKS}])
 AC_MSG_NOTICE([      tail timeout:              $SCU_TAIL_TIMEOUT])
 AC_MSG_NOTICE([ ])
 AC_MSG_NOTICE([   Support:])

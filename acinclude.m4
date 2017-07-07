@@ -58,6 +58,27 @@ AC_DEFUN([AC_SCU_PREFIX],[dnl
 ])dnl
 
 
+# AC_SCU_SYMLINKS
+# ______________________________________________________________________________
+AC_DEFUN([AC_SCU_SYMLINKS],[dnl
+
+   enableval=""
+   AC_ARG_ENABLE(
+      symlinks,
+      [AS_HELP_STRING([--disable-symlinks], [disable creating symlinks for widgets])],
+      [ ESYMLINKS=$enableval ],
+      [ ESYMLINKS=$enableval ]
+   )
+
+   if test "x${ESYMLINKS}" != "xno";then
+      ESYMLINKS="yes"
+   fi
+   SCU_SYMLINKS=${ESYMLINKS}
+
+   AM_CONDITIONAL([SCU_SYMLINKS], [test "x$SCU_SYMLINKS" = "xyes"])
+])dnl
+
+
 # AC_SCU_WIDGET_TAIL
 # ______________________________________________________________________________
 AC_DEFUN([AC_SCU_WIDGET_TAIL],[dnl

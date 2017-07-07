@@ -3,6 +3,7 @@ Secure Core Utilities
 Copyright (C) 2015, 2017 David M. Syzdek <david@syzdek.net>.
 
 0.2
+  - core: adding ability to disable creating widget symlinks (syzdek)
   - core: updating copyright notices (syzdek)
   - core: adding ability to change widget alias prefix at compile time (syzdek)
   - tail: allowing timeout to be modified via env variable TAILTIMEOUT (syzdek)
