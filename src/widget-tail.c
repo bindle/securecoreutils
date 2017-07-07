@@ -341,15 +341,27 @@ int scu_widget_tail_follow(scu_config * cnf, int fd)
    char              buff[SCU_BUFF_MAX];
    ssize_t           len;
    struct timespec   ts;
+   unsigned          alarm_seconds;
+   unsigned          tailtimeout;
+   char            * value;
+   char            * ptr;
 
+   alarm_seconds   = SCU_TAIL_TIMEOUT;
    ts.tv_sec       = 0;
    ts.tv_nsec      = 10000000;
    timeout_alarmed = 0;
 
-#if (SCU_TAIL_TIMEOUT > 0)
-   signal(SIGALRM, scu_widget_tail_follow_alarm);
-   alarm(SCU_TAIL_TIMEOUT);
-#endif
+   // sets alarm for terminating follow
+   if ((value = getenv("TAILTIMEOUT")) != NULL)
+   {
+      tailtimeout    = (unsigned)strtoul(value, &ptr, 0);
+      alarm_seconds  =  (ptr == value) ? alarm_seconds : tailtimeout;
+   };
+   if (alarm_seconds > 0)
+   {
+      signal(SIGALRM, scu_widget_tail_follow_alarm);
+      alarm(alarm_seconds);
+   };
 
    while (!(timeout_alarmed))
    {
