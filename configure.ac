@@ -39,10 +39,10 @@ AC_PREREQ([2.65])
 
 AC_COPYRIGHT([Copyright (C) 2015 Bindle Binaries <syzdek@bindlebinaries.com>.])
 AC_REVISION(0.1)
-AC_INIT([Secure Core Utilities],[0.0],[syzdek@bindlebinaries.com],[securecoreutils])
+AC_INIT([Secure Core Utilities],[0.1],[syzdek@bindlebinaries.com],[securecoreutils])
 
 
-AC_SUBST([RELEASE_MONTH],["March 2015"])
+AC_SUBST([RELEASE_MONTH],["July 2017"])
 
 
 # directory locations
