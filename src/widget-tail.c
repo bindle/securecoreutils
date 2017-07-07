@@ -54,6 +54,7 @@
 #include <unistd.h>
 #include <stdlib.h>
 #include <time.h>
+#include <signal.h>
 
 
 ///////////////////
@@ -78,6 +79,15 @@ int scu_widget_tail_bytes(scu_config * cnf, int fd, struct stat * sb,
 int scu_widget_tail_follow(scu_config * cnf, int fd);
 int scu_widget_tail_lines(scu_config * cnf, int fd, struct stat * sb,
    size_t opts, off_t optnum);
+
+
+////////////////
+//            //
+//  Variable  //
+//            //
+////////////////
+
+static int timeout_alarmed = 0;
 
 
 /////////////////
@@ -332,10 +342,16 @@ int scu_widget_tail_follow(scu_config * cnf, int fd)
    ssize_t           len;
    struct timespec   ts;
 
-   ts.tv_sec  = 0;
-   ts.tv_nsec = 10000000;
+   ts.tv_sec       = 0;
+   ts.tv_nsec      = 10000000;
+   timeout_alarmed = 0;
 
-   while (1)
+#if (SCU_TAIL_TIMEOUT > 0)
+   signal(SIGALRM, scu_widget_tail_follow_alarm);
+   alarm(SCU_TAIL_TIMEOUT);
+#endif
+
+   while (!(timeout_alarmed))
    {
       switch (len = read(fd, buff, sizeof(buff)))
       {
@@ -358,6 +374,16 @@ int scu_widget_tail_follow(scu_config * cnf, int fd)
    };
 
    return(0);
+}
+
+
+void scu_widget_tail_follow_alarm(int sig)
+{
+   timeout_alarmed = 1;
+   signal (sig, scu_widget_tail_follow_alarm);
+   alarm(1);
+   fprintf(stderr, "\n\n*** TAIL WIDGET TIMEOUT EXPIRED ***\n\n\n");
+   return;
 }
 
 

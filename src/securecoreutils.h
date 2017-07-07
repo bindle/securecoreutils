@@ -85,6 +85,11 @@
 #endif
 
 
+#ifndef SCU_TAIL_TIMEOUT
+#define SCU_TAIL_TIMEOUT 0
+#endif
+
+
 #ifdef LINE_MAX
 #   define SCU_LINE_MAX LINE_MAX
 #elif defined _POSIX2_LINE_MAX

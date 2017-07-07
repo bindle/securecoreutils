@@ -163,7 +163,8 @@ AC_BINDLE_GIT_PACKAGE_VERSION([contrib/bindletools/build-aux/git-package-version
 
 # custom configure options
 AC_BINDLE_ENABLE_WARNINGS
-AC_SCU_ZCAT_DEPS
+AC_SCU_WIDGET_TAIL
+AC_SCU_WIDGET_ZCAT
 
 
 # enables getopt_long if header and functions were found
@@ -180,6 +181,13 @@ AC_MSG_NOTICE([ ])
 AC_MSG_NOTICE([   Secure Core Utilities $GIT_PACKAGE_VERSION ($GIT_PACKAGE_BUILD)])
 AC_MSG_NOTICE([ ])
 AC_MSG_NOTICE([   Features:])
+if test "x${SCU_TAIL_TIMEOUT}" = "x0";then
+   AC_MSG_NOTICE([      tail timeout:              none)])
+else
+   AC_MSG_NOTICE([      tail timeout:              $SCU_TAIL_TIMEOUT seconds])
+fi
+AC_MSG_NOTICE([ ])
+AC_MSG_NOTICE([   Support:])
 AC_MSG_NOTICE([      zlib support:              $USE_ZLIB])
 AC_MSG_NOTICE([      bzip2 support:             $USE_BZIP2])
 AC_MSG_NOTICE([      lzma support:              $USE_LZMA])

@@ -34,9 +34,44 @@
 #   acinclude.m4 - custom m4 macros used by configure.ac
 #
 
-# AC_OPENVPN_LDAPCMD_COMPONENTS
+# AC_SCU_WIDGET_TAIL
 # ______________________________________________________________________________
-AC_DEFUN([AC_SCU_ZCAT_DEPS],[dnl
+AC_DEFUN([AC_SCU_WIDGET_TAIL],[dnl
+
+   withval=""
+   AC_ARG_WITH(
+      tail-timeout,
+      [AS_HELP_STRING([--with-tail-timeout=seconds], [terminate tail after seconds [0]])],
+      [ WTAIL_TIMEOUT=$withval ],
+      [ WTAIL_TIMEOUT=$withval ]
+   )
+
+   if test "x${WTAIL_TIMEOUT}" == "xyes";then
+      WTAIL_TIMEOUT=3600
+   elif test "x${WTAIL_TIMEOUT}" == "xno";then
+      WTAIL_TIMEOUT=0
+   elif test "x${WTAIL_TIMEOUT}" == "x";then
+      WTAIL_TIMEOUT=0
+   else
+      case $WTAIL_TIMEOUT in
+      ''|*[!0-9]*)
+      AC_MSG_ERROR([tail timeout must be a numeric value.])
+      ;;
+
+      *)
+      ;;
+      esac
+   fi
+   SCU_TAIL_TIMEOUT=${WTAIL_TIMEOUT}
+
+   AC_DEFINE_UNQUOTED(SCU_TAIL_TIMEOUT, ${SCU_TAIL_TIMEOUT}, [Timeout value for tail widget])
+
+])dnl
+
+
+# AC_SCU_WIDGET_ZCAT
+# ______________________________________________________________________________
+AC_DEFUN([AC_SCU_WIDGET_ZCAT],[dnl
 
    enableval=""
    AC_ARG_ENABLE(
@@ -58,6 +93,13 @@ AC_DEFUN([AC_SCU_ZCAT_DEPS],[dnl
       [AS_HELP_STRING([--disable-zlib], [disable zlib support [auto]])],
       [ EZLIB=$enableval ],
       [ EZLIB=$enableval ]
+   )
+   withval=""
+   AC_ARG_WITH(
+      tail-timeout,
+      [AS_HELP_STRING([--with-tail-timeout=seconds], [terminate tail after seconds [0]])],
+      [ WTAIL_TIMEOUT=$withval ],
+      [ WTAIL_TIMEOUT=$withval ]
    )
 
    # check zlib
