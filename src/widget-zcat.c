@@ -390,7 +390,8 @@ int scu_widget_zcat_lzma(scu_config * cnf)
    lzma_action    action;
    uint8_t        in[16384];
    uint8_t        out[16384];
-   size_t         len;
+   ssize_t        len;
+   int            eof;
 
    bzero(&strm, sizeof(strm));
    action         = LZMA_RUN;
@@ -412,23 +413,26 @@ int scu_widget_zcat_lzma(scu_config * cnf)
       return(1);
    };
 
-
-   while (action == LZMA_RUN)
+   ret = LZMA_OK;
+   eof = 0;
+   while (ret == LZMA_OK)
    {
-      // read from compressed file
-      strm.next_in = in;
-      if (strm.avail_in != sizeof(in))
+      // read from compressed file if input buffer is empty
+      if ((strm.avail_in == 0) && (!(eof)))
       {
-         if ((len = read(fd, &in[strm.avail_in], (sizeof(in) - strm.avail_in))) == -1)
+         if ((len = read(fd, in, sizeof(in))) == -1)
          {
             fprintf(stderr, "%s: %s: %s\n", cnf->prog_name, cnf->widget->name, strerror(errno));
             close(fd);
             return(1);
          };
-         if (len == 0)
+         strm.next_in   = in;
+         strm.avail_in  = len;
+         if (len < (ssize_t)sizeof(in))
+         {
             action = LZMA_FINISH;
-         else
-            strm.avail_in += len;
+            eof = 1;
+         };
       };
 
       // uncompress file
@@ -442,44 +446,21 @@ int scu_widget_zcat_lzma(scu_config * cnf)
          };
       };
 
-      // print uncompressed data
-      if (strm.avail_out == sizeof(out))
-         continue;
-      if ((len = write(STDOUT_FILENO, out, (sizeof(out) - strm.avail_out))) == -1)
+      // print uncompressed data if buffer is full or done inflating data
+      if ((strm.avail_out == 0) || (ret == LZMA_STREAM_END))
       {
-         fprintf(stderr, "%s: %s: %s\n", cnf->prog_name, cnf->widget->name, strerror(errno));
-         close(fd);
-         return(1);
+         if ((len = write(STDOUT_FILENO, out, (sizeof(out) - strm.avail_out))) == -1)
+         {
+            fprintf(stderr, "%s: %s: %s\n", cnf->prog_name, cnf->widget->name, strerror(errno));
+            close(fd);
+            return(1);
+         };
+         strm.avail_out = sizeof(out);
+         strm.next_out  = out;
       };
-      strm.avail_out += len;
    };
 
    close(fd);
-
-   // finish uncompressing data
-   while ( (ret != LZMA_OK) && (ret != LZMA_STREAM_END))
-   {
-      // uncompress remaining data in buffer
-      if ((ret = lzma_code(&strm, action)) != LZMA_OK)
-      {
-         if (ret != LZMA_STREAM_END)
-         {
-            scu_widget_zcat_lzma_perror(cnf, ret);
-            return(1);
-         };
-      };
-
-      // print uncompressed data
-      if (strm.avail_out == sizeof(out))
-         continue;
-      if ((len = write(STDOUT_FILENO, out, (sizeof(out) - strm.avail_out))) == -1)
-      {
-         fprintf(stderr, "%s: %s: %s\n", cnf->prog_name, cnf->widget->name, strerror(errno));
-         close(fd);
-         return(1);
-      };
-      strm.avail_out += len;
-   };
 
    return(0);
 }
