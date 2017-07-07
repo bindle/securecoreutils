@@ -121,7 +121,7 @@ struct scu_config
    int                  verbose;
    int                  opt_index;
    int                  argc;
-   char               * prog_name;
+   const char         * prog_name;
    char              ** argv;
    const scu_widget   * widget;
 };
