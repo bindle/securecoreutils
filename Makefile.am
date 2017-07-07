@@ -75,7 +75,11 @@ BUILT_SOURCES				=
 TESTS					=
 XFAIL_TESTS				=
 EXTRA_MANS				=
-EXTRA_DIST				=
+EXTRA_DIST				= \
+					  src/lzw/COPYING \
+					  src/lzw/README.md \
+					  src/lzw/UNLICENSE
+
 CLEANFILES				= \
 					  $(builddir)/a.out   $(srcdir)/a.out \
 					  $(builddir)/*/a.out $(srcdir)/*/a.out \
@@ -108,7 +112,12 @@ src_securecoreutils_SOURCES		= $(include_HEADERS) \
 					  src/widget-tail.h \
 					  src/widget-zcat.c \
 					  src/widget-zcat.h \
-					  src/lzw/lzw.c
+					  src/lzw/headers.h \
+					  src/lzw/helpers.h \
+					  src/lzw/lzw.c \
+					  src/lzw/lzw.h \
+					  src/lzw/lzw_internal.h
+
 
 
 # Makefile includes
