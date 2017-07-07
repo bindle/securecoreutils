@@ -3,8 +3,9 @@ Secure Core Utilities
 Copyright (C) 2015 Bindle Binaries <syzdek@bindlebinaries.com>.
 
 0.2
+  - tail: allowing timeout to be modified via env variable TAILTIMEOUT (syzdek)
   - zcat: fixing segfault with LXMA (.xz) and large files (syzdek)
 
-0.1
+0.1 2017-07-07
    - starting project (syzdek)
 
