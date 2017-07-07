@@ -118,9 +118,17 @@ const scu_widget scu_widget_map[] =
    {
       "zcat",                                         // widget name
       "Uncompresses file and write to standard out.", // widget description
-      (const char * const[]) { "bzcat", "gzcat",
-         "xzcat", "seczcat", "secbzcat", "secgzcat",
-         "secxzcat", NULL },                          // widget alias
+      (const char * const[]) { "seczcat",
+#ifdef USE_BZIP2
+         "bzcat", "secbzcat",
+#endif
+#ifdef USE_ZLIB
+         "gzcat", "secgzcat",
+#endif
+#ifdef USE_LZMA
+         "xzcat", "secxzcat",
+#endif
+         NULL },                                      // widget alias
       scu_widget_zcat,                                // widget function
    },
    { NULL, NULL, NULL, NULL }
