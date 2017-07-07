@@ -107,7 +107,8 @@ src_securecoreutils_SOURCES		= $(include_HEADERS) \
 					  src/widget-tail.c \
 					  src/widget-tail.h \
 					  src/widget-zcat.c \
-					  src/widget-zcat.h
+					  src/widget-zcat.h \
+					  src/lzw/lzw.c
 
 
 # Makefile includes

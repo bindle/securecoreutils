@@ -67,6 +67,8 @@
 #include <lzma.h>
 #endif
 
+#include "lzw/lzw.h"
+
 
 /////////////////
 //             //
@@ -229,12 +231,11 @@ int scu_widget_zcat(scu_config * cnf)
       return(scu_widget_zcat_lzma(cnf));
 #endif
 
-#ifdef USE_Z
    if (!( memcmp(magic, scm_magic_z_lzw, sizeof(scm_magic_z_lzw)) ))
-      return(scu_widget_zcat_prog(cnf, "/usr/bin/uncompress -c"));
-   if (!( memcmp(magic, scm_magic_z_lzh, sizeof(scm_magic_z_lzh)) ))
-      return(scu_widget_zcat_prog(cnf, "/usr/bin/uncompress -c"));
-#endif
+      return(scu_widget_zcat_lzw(cnf));
+
+//   if (!( memcmp(magic, scm_magic_z_lzh, sizeof(scm_magic_z_lzh)) ))
+//      return(scu_widget_zcat_lzh(cnf));
 
    fprintf(stderr, "%s: %s: unable to determine compression algorithms\n", PROGRAM_NAME, cnf->widget->name);
    return(1);
@@ -326,14 +327,45 @@ int scu_widget_zcat_gz(scu_config * cnf)
 #endif
 
 
-int scu_widget_zcat_prog(scu_config * cnf, const char * prog)
+int scu_widget_zcat_lzw(scu_config * cnf)
 {
-   char buff[2048];
+   int            fd;
+   lzwFile      * lzw;
+   char           buff[4096];
+   ssize_t        len;
 
-   bzero(buff, sizeof(buff));
-   snprintf(buff, sizeof(buff), "%s %s", prog, cnf->argv[optind]);
+   if ((fd = open(cnf->argv[optind], O_RDONLY)) == -1)
+   {
+      fprintf(stderr, "%s: %s: %s\n", cnf->prog_name, cnf->widget->name, strerror(errno));
+      return(1);
+   };
 
-   return(system(buff));
+   if ((lzw = lzw_fdopen(fd)) == NULL)
+   {
+      fprintf(stderr, "%s: %s: %s\n", cnf->prog_name, cnf->widget->name, strerror(errno));
+      close(fd);
+      return(1);
+   };
+
+   while((len = lzw_read(lzw, buff, sizeof(buff))) > 0)
+   {
+      if ((len = write(STDOUT_FILENO, buff, len)) == -1)
+      {
+         fprintf(stderr, "%s: %s: %s\n", cnf->prog_name, cnf->widget->name, strerror(errno));
+         lzw_close(lzw);
+         return(1);
+      };
+   };
+   if (len == -1)
+   {
+      fprintf(stderr, "%s: %s: %s\n", cnf->prog_name, cnf->widget->name, strerror(errno));
+      lzw_close(lzw);
+      return(1);
+   };
+
+   lzw_close(lzw);
+
+   return(0);
 }
 
 

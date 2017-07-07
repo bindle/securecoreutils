@@ -106,11 +106,6 @@ AC_DEFUN([AC_SCU_ZCAT_DEPS],[dnl
       fi
    fi
 
-   AC_CHECK_PROG([USE_Z], [uncompress], [yes], [no])
-   if test "x${USE_Z}" = "xyes";then
-      AC_DEFINE_UNQUOTED(USE_Z, 1, [Use uncompress])
-   fi
-
 ])dnl
 
 

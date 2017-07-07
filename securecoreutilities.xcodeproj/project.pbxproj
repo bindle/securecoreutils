@@ -28,6 +28,7 @@
 		A0446A2F1F0DFAEB000085C7 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = A0446A2E1F0DFAEB000085C7 /* libz.tbd */; };
 		A0446A311F0E1EAA000085C7 /* libbz2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = A0446A301F0E1EAA000085C7 /* libbz2.tbd */; };
 		A0446A351F0EF634000085C7 /* liblzma.5.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A0446A341F0EF634000085C7 /* liblzma.5.dylib */; };
+		A0446A401F0F12CE000085C7 /* lzw.c in Sources */ = {isa = PBXBuildFile; fileRef = A0446A3D1F0F12BA000085C7 /* lzw.c */; };
 		A054C3DD1B0292930036591C /* securecoreutils.c in Sources */ = {isa = PBXBuildFile; fileRef = A054C3D71B0292930036591C /* securecoreutils.c */; };
 		A054C3DE1B0292930036591C /* widget-cat.c in Sources */ = {isa = PBXBuildFile; fileRef = A054C3D91B0292930036591C /* widget-cat.c */; };
 		A054C3DF1B0292930036591C /* widget-pathcheck.c in Sources */ = {isa = PBXBuildFile; fileRef = A054C3DB1B0292930036591C /* widget-pathcheck.c */; };
@@ -70,6 +71,14 @@
 		A0446A301F0E1EAA000085C7 /* libbz2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libbz2.tbd; path = usr/lib/libbz2.tbd; sourceTree = SDKROOT; };
 		A0446A321F0EF50A000085C7 /* liblzma.5.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = liblzma.5.dylib; path = ../../../../../opt/local/lib/liblzma.5.dylib; sourceTree = "<group>"; };
 		A0446A341F0EF634000085C7 /* liblzma.5.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = liblzma.5.dylib; path = ../../../../../opt/devel/lib/liblzma.5.dylib; sourceTree = "<group>"; };
+		A0446A381F0F12BA000085C7 /* COPYING */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = COPYING; sourceTree = "<group>"; };
+		A0446A391F0F12BA000085C7 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		A0446A3A1F0F12BA000085C7 /* UNLICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = UNLICENSE; sourceTree = "<group>"; };
+		A0446A3B1F0F12BA000085C7 /* headers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = headers.h; sourceTree = "<group>"; };
+		A0446A3C1F0F12BA000085C7 /* helpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = helpers.h; sourceTree = "<group>"; };
+		A0446A3D1F0F12BA000085C7 /* lzw.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = lzw.c; sourceTree = "<group>"; };
+		A0446A3E1F0F12BA000085C7 /* lzw.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lzw.h; sourceTree = "<group>"; };
+		A0446A3F1F0F12BA000085C7 /* lzw_internal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lzw_internal.h; sourceTree = "<group>"; };
 		A054C3A51B0292600036591C /* securecoreutilities */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = securecoreutilities; sourceTree = BUILT_PRODUCTS_DIR; };
 		A054C3AD1B0292930036591C /* acinclude.m4 */ = {isa = PBXFileReference; explicitFileType = text.script; fileEncoding = 4; path = acinclude.m4; sourceTree = "<group>"; };
 		A054C3AE1B0292930036591C /* AUTHORS */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = AUTHORS; sourceTree = "<group>"; };
@@ -114,6 +123,21 @@
 				A0446A2E1F0DFAEB000085C7 /* libz.tbd */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A0446A371F0F12BA000085C7 /* lzw */ = {
+			isa = PBXGroup;
+			children = (
+				A0446A381F0F12BA000085C7 /* COPYING */,
+				A0446A391F0F12BA000085C7 /* README.md */,
+				A0446A3A1F0F12BA000085C7 /* UNLICENSE */,
+				A0446A3B1F0F12BA000085C7 /* headers.h */,
+				A0446A3C1F0F12BA000085C7 /* helpers.h */,
+				A0446A3D1F0F12BA000085C7 /* lzw.c */,
+				A0446A3E1F0F12BA000085C7 /* lzw.h */,
+				A0446A3F1F0F12BA000085C7 /* lzw_internal.h */,
+			);
+			path = lzw;
 			sourceTree = "<group>";
 		};
 		A054C3951B0291F50036591C = {
@@ -174,6 +198,7 @@
 		A054C3D61B0292930036591C /* src */ = {
 			isa = PBXGroup;
 			children = (
+				A0446A371F0F12BA000085C7 /* lzw */,
 				A054C3D71B0292930036591C /* securecoreutils.c */,
 				A054C3D81B0292930036591C /* securecoreutils.h */,
 				A054C3D91B0292930036591C /* widget-cat.c */,
@@ -272,6 +297,7 @@
 				A0446A241F0DC853000085C7 /* widget-rmdir.c in Sources */,
 				A054C3DE1B0292930036591C /* widget-cat.c in Sources */,
 				A005C1831EC8C6BD00A08403 /* widget-tail.c in Sources */,
+				A0446A401F0F12CE000085C7 /* lzw.c in Sources */,
 				A0446A271F0DDF83000085C7 /* widget-zcat.c in Sources */,
 				A054C3DF1B0292930036591C /* widget-pathcheck.c in Sources */,
 				A054C3DD1B0292930036591C /* securecoreutils.c in Sources */,
