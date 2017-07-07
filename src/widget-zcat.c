@@ -63,7 +63,7 @@
 #include <bzlib.h>
 #endif
 
-#ifdef USE_XZ
+#ifdef USE_LZMA
 #include <lzma.h>
 #endif
 
@@ -79,7 +79,7 @@ const uint8_t scm_magic_gz[2]    = { 0x1f, 0x8b };                         // ta
 const uint8_t scm_magic_lz4[4]   = { 0x04, 0x22, 0x4d, 0x18 };             // tar.lz4
 const uint8_t scm_magic_z_lzw[2] = { 0x1f, 0x9d };                         // tar.Z
 const uint8_t scm_magic_z_lzh[2] = { 0x1f, 0xa0 };                         // tar.Z
-const uint8_t scm_magic_xz[6]    = { 0xfd, 0x37, 0x7a, 0x58, 0x5a, 0x00 }; // tar.xz
+const uint8_t scm_magic_lzma[6]  = { 0xfd, 0x37, 0x7a, 0x58, 0x5a, 0x00 }; // tar.xz
 
 
 //////////////////
@@ -91,8 +91,8 @@ const uint8_t scm_magic_xz[6]    = { 0xfd, 0x37, 0x7a, 0x58, 0x5a, 0x00 }; // ta
 #pragma mark -
 #endif
 
-#ifdef USE_XZ
-int scu_widget_zcat_xz_perror(scu_config * cnf, lzma_ret ret);
+#ifdef USE_LZMA
+int scu_widget_zcat_lzma_perror(scu_config * cnf, lzma_ret ret);
 #endif
 
 
@@ -226,9 +226,9 @@ int scu_widget_zcat(scu_config * cnf)
       return(scu_widget_zcat_bz2(cnf));
 #endif
 
-#ifdef USE_XZ
-   if (!( memcmp(magic, scm_magic_xz, sizeof(scm_magic_xz)) ))
-      return(scu_widget_zcat_xz(cnf));
+#ifdef USE_LZMA
+   if (!( memcmp(magic, scm_magic_lzma, sizeof(scm_magic_lzma)) ))
+      return(scu_widget_zcat_lzma(cnf));
 #endif
 
 #ifdef USE_Z
@@ -351,8 +351,8 @@ void scu_widget_zcat_usage(scu_config * cnf)
 }
 
 
-#ifdef USE_XZ
-int scu_widget_zcat_xz(scu_config * cnf)
+#ifdef USE_LZMA
+int scu_widget_zcat_lzma(scu_config * cnf)
 {
    int            fd;
    lzma_ret       ret;
@@ -377,7 +377,7 @@ int scu_widget_zcat_xz(scu_config * cnf)
 
    if ((ret = lzma_stream_decoder(&strm, UINT64_MAX, LZMA_CONCATENATED)) != LZMA_OK)
    {
-      scu_widget_zcat_xz_perror(cnf, ret);
+      scu_widget_zcat_lzma_perror(cnf, ret);
       close(fd);
       return(1);
    };
@@ -406,7 +406,7 @@ int scu_widget_zcat_xz(scu_config * cnf)
       {
          if (ret != LZMA_STREAM_END)
          {
-            scu_widget_zcat_xz_perror(cnf, ret);
+            scu_widget_zcat_lzma_perror(cnf, ret);
             close(fd);
             return(1);
          };
@@ -434,7 +434,7 @@ int scu_widget_zcat_xz(scu_config * cnf)
       {
          if (ret != LZMA_STREAM_END)
          {
-            scu_widget_zcat_xz_perror(cnf, ret);
+            scu_widget_zcat_lzma_perror(cnf, ret);
             return(1);
          };
       };
@@ -455,7 +455,7 @@ int scu_widget_zcat_xz(scu_config * cnf)
 }
 
 
-int scu_widget_zcat_xz_perror(scu_config * cnf, lzma_ret ret)
+int scu_widget_zcat_lzma_perror(scu_config * cnf, lzma_ret ret)
 {
    switch(ret)
    {
@@ -468,7 +468,7 @@ int scu_widget_zcat_xz_perror(scu_config * cnf, lzma_ret ret)
       return(1);
 
       case LZMA_FORMAT_ERROR:
-      fprintf(stderr, "%s: %s: invalid .xz format\n", cnf->prog_name, cnf->widget->name);
+      fprintf(stderr, "%s: %s: invalid LZMA format\n", cnf->prog_name, cnf->widget->name);
       return(1);
 
       case LZMA_MEM_ERROR:
