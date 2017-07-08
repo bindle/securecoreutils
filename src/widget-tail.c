@@ -85,6 +85,8 @@ int scu_widget_tail_bytes(scu_config * cnf, int fd, struct stat * sb,
 int scu_widget_tail_follow(scu_config * cnf, int fd);
 int scu_widget_tail_lines(scu_config * cnf, int fd, struct stat * sb,
    size_t opts, off_t optnum);
+void scu_widget_tail_usage(scu_config * cnf);
+void scu_widget_tail_follow_alarm(int sig);
 
 
 /////////////////

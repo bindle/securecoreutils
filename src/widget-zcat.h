@@ -61,11 +61,6 @@
 #endif
 
 int scu_widget_zcat(scu_config * cnf);
-int scu_widget_zcat_bz2(scu_config * cnf);
-int scu_widget_zcat_gz(scu_config * cnf);
-int scu_widget_zcat_lzma(scu_config * cnf);
-int scu_widget_zcat_lzw(scu_config * cnf);
 
-void scu_widget_zcat_usage(scu_config * cnf);
 
 #endif /* end of header */

@@ -46,6 +46,18 @@
 #include <stdio.h>
 
 
+//////////////////
+//              //
+//  Prototypes  //
+//              //
+//////////////////
+#ifdef __SECURECOREUTILS_PMARK
+#pragma mark - Prototypes
+#endif
+
+void scu_widget_pathcheck_usage(scu_config * cnf);
+
+
 /////////////////
 //             //
 //  Functions  //

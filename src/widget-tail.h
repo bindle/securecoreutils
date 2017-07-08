@@ -62,7 +62,5 @@
 
 int scu_widget_tail(scu_config * cnf);
 
-void scu_widget_tail_usage(scu_config * cnf);
-void scu_widget_tail_follow_alarm(int sig);
 
 #endif /* end of header */
