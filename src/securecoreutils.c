@@ -410,7 +410,7 @@ void scu_usage_summary(scu_config * cnf, const char * suffix)
          printf("       %s%s\n", cnf->widget->alias[x], suffix);
 
    return;
-};
+}
 
 
 void scu_version(void)
