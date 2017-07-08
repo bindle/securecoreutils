@@ -13,8 +13,9 @@ Contents
    1. Disclaimer
    2. Maintainers
    3. Background
-   4. Source Code
-   5. Package Maintence Notes
+   4. Utilities
+   5. Source Code
+   6. Package Maintence Notes
 
 
 Disclaimer
@@ -105,6 +106,20 @@ Background
          secure_path=/usr/libexec/securecoreutils:/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin
 
       %support ALL=(ALL) /usr/libexec/securecoreutils/cat /var/log/*
+
+
+Utilities
+=========
+
+   bzcat          Uncompresses file and write to standard out.
+   cat            Writes contents of file to standard out.
+   gzcat          Uncompresses file and write to standard out.
+   pathcheck      Validates path using internal checks.
+   rm             Removes a file.
+   rmdir          Removes a directory.
+   tail           Writes contents of file to standard out.
+   zcat           Uncompresses file and write to standard out (supports .bz2, .gz, .xz, .Z).
+   xzcat          Uncompresses file and write to standard out.
 
 
 Source Code
