@@ -75,6 +75,9 @@
 //  Variables  //
 //             //
 /////////////////
+#ifdef __SECURECOREUTILS_PMARK
+#pragma mark - Variables
+#endif
 
 const uint8_t scm_magic_bz2[3]   = { 0x42, 0x5a, 0x68 };                   // tar.bz2
 const uint8_t scm_magic_gz[2]    = { 0x1f, 0x8b };                         // tar.gz
@@ -89,8 +92,8 @@ const uint8_t scm_magic_lzma[6]  = { 0xfd, 0x37, 0x7a, 0x58, 0x5a, 0x00 }; // ta
 //  Prototypes  //
 //              //
 //////////////////
-#ifdef __TALLYMARK_PMARK
-#pragma mark -
+#ifdef __SECURECOREUTILS_PMARK
+#pragma mark - Prototypes
 #endif
 
 #ifdef USE_LZMA

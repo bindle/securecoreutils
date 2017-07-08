@@ -56,8 +56,8 @@
 //  Prototypes  //
 //              //
 //////////////////
-#ifdef __TALLYMARK_PMARK
-#pragma mark -
+#ifdef __SECURECOREUTILS_PMARK
+#pragma mark - Prototypes
 #endif
 
 int scu_widget_rm(scu_config * cnf);

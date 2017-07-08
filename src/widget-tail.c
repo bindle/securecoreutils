@@ -62,6 +62,9 @@
 //  Definitions  //
 //               //
 ///////////////////
+#ifdef __SECURECOREUTILS_PMARK
+#pragma mark - Definitions
+#endif
 
 #define SCU_TAIL_OBOL      0x01
 #define SCU_TAIL_OBYTES    0x02
@@ -73,6 +76,9 @@
 //  Prototypes  //
 //              //
 //////////////////
+#ifdef __SECURECOREUTILS_PMARK
+#pragma mark - Prototypes
+#endif
 
 int scu_widget_tail_bytes(scu_config * cnf, int fd, struct stat * sb,
    size_t opts, off_t optnum);
@@ -81,11 +87,14 @@ int scu_widget_tail_lines(scu_config * cnf, int fd, struct stat * sb,
    size_t opts, off_t optnum);
 
 
-////////////////
-//            //
-//  Variable  //
-//            //
-////////////////
+/////////////////
+//             //
+//  Variables  //
+//             //
+/////////////////
+#ifdef __SECURECOREUTILS_PMARK
+#pragma mark - Variables
+#endif
 
 static int timeout_alarmed = 0;
 

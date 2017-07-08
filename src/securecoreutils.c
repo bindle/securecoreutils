@@ -89,7 +89,7 @@ const scu_widget * scu_widget_lookup(const char * wname, int exact);
 //  Variables  //
 //             //
 /////////////////
-#ifdef __TALLYMARK_PMARK
+#ifdef __SECURECOREUTILS_PMARK
 #pragma mark - Variables
 #endif
 

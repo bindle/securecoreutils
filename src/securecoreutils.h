@@ -152,7 +152,7 @@ struct scu_widget
 //              //
 //////////////////
 #ifdef __SECURECOREUTILS_PMARK
-#pragma mark -
+#pragma mark - Prototypes
 #endif
 
 /// checks paths
