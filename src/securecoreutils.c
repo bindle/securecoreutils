@@ -44,6 +44,9 @@
 #include "securecoreutils.h"
 
 #include <stdio.h>
+#include <termios.h>
+#include <sys/ioctl.h>
+#include <math.h>
 #include <assert.h>
 #include <string.h>
 #include <strings.h>
@@ -82,6 +85,7 @@
 int main(int argc, char * argv[]);
 const char * scu_basename(const char * path);
 const scu_widget * scu_widget_lookup(const char * wname, int exact);
+int scu_widget_syzdek(scu_config * cnf);
 
 
 /////////////////
@@ -119,6 +123,14 @@ const scu_widget scu_widget_map[] =
       (const char * const[]) { _PREFIX"rmdir", NULL },// widget alias
       scu_widget_rmdir,                               // widget function
    },
+#ifdef SCU_EASTER_EGGS
+   {
+      "syzdek",                                       // widget name
+      NULL,                                           // widget description
+      (const char * const[]) { "david", NULL },       // widget alias
+      scu_widget_syzdek,                              // widget function
+   },
+#endif
    {
       "tail",                                         // widget name
       "Writes contents of file to standard out.",     // widget description
@@ -345,6 +357,8 @@ void scu_usage(scu_config * cnf)
    {
       if (scu_widget_map[x].func == NULL)
          continue;
+      if (scu_widget_map[x].desc == NULL)
+         continue;
       printf("   %-24s %s\n", scu_widget_map[x].name, scu_widget_map[x].desc);
    };
    printf("\n");
@@ -355,6 +369,8 @@ void scu_usage(scu_config * cnf)
       if (scu_widget_map[x].func == NULL)
          continue;
       if (scu_widget_map[x].alias == NULL)
+         continue;
+      if (scu_widget_map[x].desc == NULL)
          continue;
       printf("   %-24s %s\n", scu_widget_map[x].name, scu_widget_map[x].alias[0]);
       for (y = 1; scu_widget_map[x].alias[y] != NULL; y++)
@@ -465,6 +481,9 @@ const scu_widget * scu_widget_lookup(const char * wname, int exact)
    prefix_uniq    = -1;
    prefix_common  = -1;
 
+   if (!(strcasecmp(PROGRAM_NAME, wname)))
+      return(NULL);
+
    for(x = 0; scu_widget_map[x].name != NULL; x++)
    {
       widget = &scu_widget_map[x];
@@ -520,6 +539,57 @@ const scu_widget * scu_widget_lookup(const char * wname, int exact)
 
    return(matched_widget);
 }
+
+
+#ifdef SCU_EASTER_EGGS
+int scu_widget_syzdek(scu_config * cnf)
+{
+   unsigned  z;
+   double    x;
+   double    w;
+   double    h;
+#ifdef TIOCGSIZE
+   struct ttysize b;
+#else
+   struct winsize b;
+#endif
+   const char * package = "Secure Core Utilities";
+   const char * author  = "by David M. Syzdek";
+   const char * msg     = PACKAGE_NAME " v" PACKAGE_VERSION " by David M. Syzdek";
+
+   assert(cnf != NULL);
+
+   x = 0.0;
+
+   while(1)
+   {
+#ifdef TIOCGSIZE
+      w = ioctl(0,TIOCGSIZE,&b) ? 80 : b.ts_cols;
+      h = b.ts_lines;
+#else
+      w = ioctl(0,TIOCGWINSZ,&b) ? 80 : b.ws_col;
+      h = b.ws_row;
+#endif
+      for (z = 0; z < strlen(msg)+1; z++)
+      {
+         printf("\033[%i;%iH\033[1;%im%c\033[0m",
+            //(int)((sin(((x-z)*(360.0/h))/57.3)*(h/2.0))+((h/2.0)+1.0)),
+            (int)(( sin(((x-z)*(360.0/h))/80) * (h/2.0)) + ((h/2.0)+1.0) ),
+            (int)(( sin(((x-z)*(360.0/w))/80) * (w/2.0)) + ((w/2.0)+1.0) ),
+            30+(z%8),
+            msg[z]);
+      };
+      printf("\033[%i;%iH%s", (int)h-1, (int)w - (int)strlen(package), package);
+      printf("\033[%i;%iH%s", (int)h, (int)w - (int)strlen(author), author);
+      fflush(stdout);
+      usleep(100000);
+      printf("\033[2J\033[512;512H");
+      x += 1;
+   };
+
+   return(0);
+}
+#endif
 
 
 const char * scu_strerror(int err)

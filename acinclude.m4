@@ -58,6 +58,24 @@ AC_DEFUN([AC_SCU_PREFIX],[dnl
 ])dnl
 
 
+# AC_SCU_EGG
+# ______________________________________________________________________________
+AC_DEFUN([AC_SCU_EGG],[dnl
+
+   enableval=""
+   AC_ARG_ENABLE(
+      easter-egg,
+      [AS_HELP_STRING([--disable-easter-egg], [disable easter egg widget])],
+      [ EEASTER_EGGS=$enableval ],
+      [ EEASTER_EGGS=$enableval ]
+   )
+
+   if test "x${EEASTER_EGGS}" != "xno";then
+      AC_DEFINE_UNQUOTED(SCU_EASTER_EGGS, 1, [enable easter egg widget])
+   fi
+])dnl
+
+
 # AC_SCU_SYMLINKS
 # ______________________________________________________________________________
 AC_DEFUN([AC_SCU_SYMLINKS],[dnl

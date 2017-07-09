@@ -6,6 +6,7 @@ Copyright (C) 2015, 2017 David M. Syzdek <david@syzdek.net>.
   - core: adding ability to disable creating widget symlinks (syzdek)
   - core: updating copyright notices (syzdek)
   - core: adding ability to change widget alias prefix at compile time (syzdek)
+  - syzdek: adding easter egg widget (syzdek)
   - tail: allowing timeout to be modified via env variable TAILTIMEOUT (syzdek)
   - zcat: fixing segfault with LXMA (.xz) and large files (syzdek)
 
