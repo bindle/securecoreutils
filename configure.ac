@@ -107,6 +107,7 @@ AC_FUNC_FORK
 AC_FUNC_MALLOC
 AC_FUNC_REALLOC
 AC_FUNC_STRERROR_R
+AC_FUNC_LSTAT_FOLLOWS_SLASHED_SYMLINK
 
 # Type checks
 AC_TYPE_INT8_T
@@ -123,12 +124,14 @@ AC_TYPE_UINT32_T
 AC_TYPE_UINT64_T
 
 # check for required functions
+AC_CHECK_FUNCS([alarm],          [], [AC_MSG_ERROR([missing required functions])])
 AC_CHECK_FUNCS([bzero],          [], [AC_MSG_ERROR([missing required functions])])
 AC_CHECK_FUNCS([memset],         [], [AC_MSG_ERROR([missing required functions])])
 AC_CHECK_FUNCS([rmdir],          [], [AC_MSG_ERROR([missing required functions])])
 AC_CHECK_FUNCS([strcasecmp],     [], [AC_MSG_ERROR([missing required functions])])
 AC_CHECK_FUNCS([strdup],         [], [AC_MSG_ERROR([missing required functions])])
 AC_CHECK_FUNCS([strerror],       [], [AC_MSG_ERROR([missing required functions])])
+AC_CHECK_FUNCS([strtoul],        [], [AC_MSG_ERROR([missing required functions])])
 
 # check for headers
 AC_CHECK_HEADERS([assert.h],    [], [AC_MSG_ERROR([missing required headers])])
@@ -144,8 +147,10 @@ AC_CHECK_HEADERS([stdio.h],     [], [AC_MSG_ERROR([missing required headers])])
 AC_CHECK_HEADERS([stdlib.h],    [], [AC_MSG_ERROR([missing required headers])])
 AC_CHECK_HEADERS([string.h],    [], [AC_MSG_ERROR([missing required headers])])
 AC_CHECK_HEADERS([sys/cdefs.h], [], [AC_MSG_ERROR([missing required headers])])
+AC_CHECK_HEADERS([sys/ioctl.h], [], [AC_MSG_ERROR([missing required headers])])
 AC_CHECK_HEADERS([sys/types.h], [], [AC_MSG_ERROR([missing required headers])])
 AC_CHECK_HEADERS([sys/stat.h],  [], [AC_MSG_ERROR([missing required headers])])
+AC_CHECK_HEADERS([termios.h],   [], [AC_MSG_ERROR([missing required headers])])
 AC_CHECK_HEADERS([time.h],      [], [AC_MSG_ERROR([missing required headers])])
 AC_CHECK_HEADERS([unistd.h],    [], [AC_MSG_ERROR([missing required headers])])
 
