@@ -86,6 +86,8 @@ int main(int argc, char * argv[]);
 const char * scu_basename(const char * path);
 const scu_widget * scu_widget_lookup(const char * wname, int exact);
 int scu_widget_syzdek(scu_config * cnf);
+int scu_widget_version(scu_config * cnf);
+int scu_widget_usage(scu_config * cnf);
 
 
 /////////////////
@@ -104,6 +106,12 @@ const scu_widget scu_widget_map[] =
       "Writes contents of file to standard out.",     // widget description
       (const char * const[]) { _PREFIX"cat", NULL },  // widget alias
       scu_widget_cat,                                 // widget function
+   },
+   {
+      "help",                                         // widget name
+      NULL,                                           // widget description
+      (const char * const[]) { "usage", NULL },       // widget alias
+      scu_widget_usage,                               // widget function
    },
    {
       "pathcheck",                                    // widget name
@@ -136,6 +144,12 @@ const scu_widget scu_widget_map[] =
       "Writes contents of file to standard out.",     // widget description
       (const char * const[]) { _PREFIX"tail", NULL }, // widget alias
       scu_widget_tail,                                // widget function
+   },
+   {
+      "version",                                      // widget name
+      NULL,                                           // widget description
+      NULL,                                           // widget alias
+      scu_widget_version,                             // widget function
    },
    {
       "zcat",                                         // widget name
@@ -590,6 +604,22 @@ int scu_widget_syzdek(scu_config * cnf)
    return(0);
 }
 #endif
+
+
+int scu_widget_usage(scu_config * cnf)
+{
+   assert(cnf != NULL);
+   scu_usage(cnf);
+   return(0);
+}
+
+
+int scu_widget_version(scu_config * cnf)
+{
+   assert(cnf != NULL);
+   scu_version();
+   return(0);
+}
 
 
 const char * scu_strerror(int err)

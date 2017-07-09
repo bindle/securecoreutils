@@ -8,6 +8,8 @@ Copyright (C) 2015, 2017 David M. Syzdek <david@syzdek.net>.
   - core: adding ability to change widget alias prefix at compile time (syzdek)
   - syzdek: adding easter egg widget (syzdek)
   - tail: allowing timeout to be modified via env variable TAILTIMEOUT (syzdek)
+  - usage: adding usage widget (syzdek)
+  - version: adding version widget (syzdek)
   - zcat: fixing segfault with LXMA (.xz) and large files (syzdek)
 
 0.1 2017-07-07
