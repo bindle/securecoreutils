@@ -137,6 +137,7 @@ int scu_widget_zcat(scu_config * cnf)
    };
 
    assert(cnf != NULL);
+   cnf->short_opt = short_opt;
 
    bzero(magic, sizeof(magic));
 
@@ -381,7 +382,7 @@ void scu_widget_zcat_usage(scu_config * cnf)
 {
    scu_usage_summary(cnf, " [OPTIONS] file");
    printf("\n");
-   scu_usage_options();
+   scu_usage_options(cnf);
    printf("\n");
    scu_usage_restrictions();
    printf("\n");

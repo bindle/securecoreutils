@@ -133,6 +133,7 @@ struct scu_config
    int                  argc;
    const char         * prog_name;
    char              ** argv;
+   const char         * short_opt;
    const scu_widget   * widget;
 };
 
@@ -159,8 +160,8 @@ struct scu_widget
 int scu_pathcheck(const char * path, int isdir);
 
 /// Displays secure core utils wrapper usage
-void scu_usage(void);
-void scu_usage_options(void);
+void scu_usage(scu_config * cnf);
+void scu_usage_options(scu_config * cnf);
 void scu_usage_restrictions(void);
 void scu_usage_summary(scu_config * cnf, const char * suffix);
 

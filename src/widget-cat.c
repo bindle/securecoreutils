@@ -95,6 +95,7 @@ int scu_widget_cat(scu_config * cnf)
    };
 
    assert(cnf != NULL);
+   cnf->short_opt = short_opt;
 
    while((c = getopt_long(cnf->argc, cnf->argv, short_opt, long_opt, &opt_index)) != -1)
    {
@@ -217,7 +218,7 @@ void scu_widget_cat_usage(scu_config * cnf)
 {
    scu_usage_summary(cnf, " [OPTIONS] file");
    printf("\n");
-   scu_usage_options();
+   scu_usage_options(cnf);
    printf("\n");
    scu_usage_restrictions();
    printf("\n");

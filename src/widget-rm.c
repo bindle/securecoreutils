@@ -100,6 +100,7 @@ int scu_widget_rm(scu_config * cnf)
    };
 
    assert(cnf != NULL);
+   cnf->short_opt = short_opt;
 
    force    = 0;
    prompt   = 0;
@@ -240,7 +241,7 @@ void scu_widget_rm_usage(scu_config * cnf)
 {
    scu_usage_summary(cnf, " [OPTIONS] file");
    printf("\n");
-   scu_usage_options();
+   scu_usage_options(cnf);
    printf("  -i                        prompt for confirmation\n");
    printf("  -f, --force               ignore nonexistent files\n");
    printf("\n");

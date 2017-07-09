@@ -93,6 +93,7 @@ int scu_widget_rmdir(scu_config * cnf)
    };
 
    assert(cnf != NULL);
+   cnf->short_opt = short_opt;
 
    while((c = getopt_long(cnf->argc, cnf->argv, short_opt, long_opt, &opt_index)) != -1)
    {
@@ -192,7 +193,7 @@ void scu_widget_rmdir_usage(scu_config * cnf)
 {
    scu_usage_summary(cnf, " [OPTIONS] file");;
    printf("\n");
-   scu_usage_options();
+   scu_usage_options(cnf);
    printf("  -i                        prompt for confirmation\n");
    printf("  -f, --force               ignore nonexistent files\n");
    printf("\n");

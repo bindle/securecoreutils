@@ -137,6 +137,7 @@ int scu_widget_tail(scu_config * cnf)
    };
 
    assert(cnf != NULL);
+   cnf->short_opt = short_opt;
 
    opts     = 0;
    optnum   = 10;
@@ -515,7 +516,7 @@ void scu_widget_tail_usage(scu_config * cnf)
 {
    scu_usage_summary(cnf, " [OPTIONS] file");
    printf("\n");
-   scu_usage_options();
+   scu_usage_options(cnf);
    printf("  -c, --bytes=X             output the last X bytes\n");
    printf("  -f, --follow              output appended data as the file grows\n");
    printf("  -n, --lines=X             output the last X lines\n");

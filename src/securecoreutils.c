@@ -193,7 +193,7 @@ int main(int argc, char * argv[])
          break;
 
          case 'h':
-         scu_usage();
+         scu_usage(&cnf);
          return(0);
 
          case 's':
@@ -328,7 +328,7 @@ int scu_pathcheck(const char * path, int isdir)
 }
 
 
-void scu_usage(void)
+void scu_usage(scu_config * cnf)
 {
    int  x;
    int  y;
@@ -337,7 +337,7 @@ void scu_usage(void)
    printf("       widget [OPTIONS]\n");
    printf("\n");
 
-   scu_usage_options();
+   scu_usage_options(cnf);
    printf("\n");
 
    printf("WIDGETS:\n");
@@ -369,13 +369,38 @@ void scu_usage(void)
 }
 
 
-void scu_usage_options(void)
+void scu_usage_options(scu_config * cnf)
 {
+   int i;
+
+   cnf->short_opt = (cnf->short_opt == NULL) ? "hqVv" : cnf->short_opt;
    printf("OPTIONS:\n");
-   printf("  -h, --help                print this help and exit\n");
-   printf("  -q, --quiet, --silent     do not print messages\n");
-   printf("  -V, --version             print version number and exit\n");
-   printf("  -v, --verbose             print verbose messages\n");
+
+   for (i = 0; ((cnf->short_opt[i])); i++)
+   {
+      switch (cnf->short_opt[i])
+      {
+         case 'h':
+         printf("  -h, --help                print this help and exit\n");
+         break;
+
+         case 'q':
+         printf("  -q, --quiet, --silent     do not print messages\n");
+         break;
+
+         case 'V':
+         printf("  -V, --version             print version number and exit\n");
+         break;
+
+         case 'v':
+         printf("  -v, --verbose             print verbose messages\n");
+         break;
+
+         default:
+         break;
+      };
+   };
+
    return;
 }
 

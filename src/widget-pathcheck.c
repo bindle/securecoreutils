@@ -88,6 +88,7 @@ int scu_widget_pathcheck(scu_config * cnf)
    };
 
    assert(cnf != NULL);
+   cnf->short_opt = short_opt;
 
    isdir = 0;
 
@@ -171,7 +172,7 @@ void scu_widget_pathcheck_usage(scu_config * cnf)
 {
    scu_usage_summary(cnf, " [OPTIONS] file");
    printf("\n");
-   scu_usage_options();
+   scu_usage_options(cnf);
    printf("  -d, --directory           check path for directory instead of file\n");
    printf("\n");
    scu_usage_restrictions();
