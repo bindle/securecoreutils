@@ -113,7 +113,6 @@ src_securecoreutils_SOURCES		= $(include_HEADERS) \
 					  src/widget-zcat.c \
 					  src/widget-zcat.h \
 					  src/lzw/headers.h \
-					  src/lzw/helpers.h \
 					  src/lzw/lzw.c \
 					  src/lzw/lzw.h \
 					  src/lzw/lzw_internal.h

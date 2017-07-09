@@ -75,7 +75,6 @@
 		A0446A391F0F12BA000085C7 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		A0446A3A1F0F12BA000085C7 /* UNLICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = UNLICENSE; sourceTree = "<group>"; };
 		A0446A3B1F0F12BA000085C7 /* headers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = headers.h; sourceTree = "<group>"; };
-		A0446A3C1F0F12BA000085C7 /* helpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = helpers.h; sourceTree = "<group>"; };
 		A0446A3D1F0F12BA000085C7 /* lzw.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = lzw.c; sourceTree = "<group>"; };
 		A0446A3E1F0F12BA000085C7 /* lzw.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lzw.h; sourceTree = "<group>"; };
 		A0446A3F1F0F12BA000085C7 /* lzw_internal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lzw_internal.h; sourceTree = "<group>"; };
@@ -132,7 +131,6 @@
 				A0446A391F0F12BA000085C7 /* README.md */,
 				A0446A3A1F0F12BA000085C7 /* UNLICENSE */,
 				A0446A3B1F0F12BA000085C7 /* headers.h */,
-				A0446A3C1F0F12BA000085C7 /* helpers.h */,
 				A0446A3D1F0F12BA000085C7 /* lzw.c */,
 				A0446A3E1F0F12BA000085C7 /* lzw.h */,
 				A0446A3F1F0F12BA000085C7 /* lzw_internal.h */,

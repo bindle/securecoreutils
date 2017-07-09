@@ -11,6 +11,6 @@
 #define __IN_LIBLZW
 #include "lzw.h"
 
-#include "helpers.h"
+//#include "helpers.h"
 
 #endif /* _LIBLZW_INTERNAL_H */
