@@ -11,6 +11,8 @@ Copyright (C) 2015, 2017 David M. Syzdek <david@syzdek.net>.
   - usage: adding usage widget (syzdek)
   - version: adding version widget (syzdek)
   - zcat: fixing segfault with LXMA (.xz) and large files (syzdek)
+  - touch: adding touch widget (syzdek)
+  - pathcheck: adding ability to ignore mising files (syzdek)
 
 0.1 2017-07-07
    - starting project (syzdek)

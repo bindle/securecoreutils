@@ -118,6 +118,7 @@ Utilities
    rm             Removes a file.
    rmdir          Removes a directory.
    tail           Writes contents of file to standard out.
+   touch          Updates access and modify timestamps of file.
    zcat           Uncompresses file and write to standard out (supports .bz2, .gz, .xz, .Z).
    xzcat          Uncompresses file and write to standard out.
 
