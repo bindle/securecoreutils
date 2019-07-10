@@ -60,7 +60,7 @@ AC_CANONICAL_TARGET
 
 
 # configures for automake
-AM_INIT_AUTOMAKE(gnu std-options subdir-objects)
+AM_INIT_AUTOMAKE(gnu std-options subdir-objects foreign)
 
 
 # Compilers

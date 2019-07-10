@@ -55,7 +55,7 @@ DEFS					=
 
 # automake targets
 check_PROGRAMS				=
-doc_DATA				= README COPYING ChangeLog AUTHORS TODO
+doc_DATA				= README.md COPYING ChangeLog AUTHORS TODO
 include_HEADERS				=
 lib_LTLIBRARIES				=
 man_MANS				=
@@ -76,6 +76,7 @@ TESTS					=
 XFAIL_TESTS				=
 EXTRA_MANS				=
 EXTRA_DIST				= \
+					  README.md \
 					  src/lzw/COPYING \
 					  src/lzw/README.md \
 					  src/lzw/UNLICENSE
