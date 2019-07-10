@@ -72,13 +72,14 @@ int scu_widget_pathcheck(scu_config * cnf)
    int            c;
    int            opt_index;
    int            rc;
-   int            isdir;
+   int            opts;
 
    // getopt options
-   static char   short_opt[] = "+dhqVv";
+   static char   short_opt[] = "+dihqVv";
    static struct option long_opt[] =
    {
       {"help",             no_argument,       NULL, 'h' },
+      {"ignore",           no_argument,       NULL, 'i' },
       {"quiet",            no_argument,       NULL, 'q' },
       {"silent",           no_argument,       NULL, 'q' },
       {"version",          no_argument,       NULL, 'V' },
@@ -90,7 +91,7 @@ int scu_widget_pathcheck(scu_config * cnf)
    assert(cnf != NULL);
    cnf->short_opt = short_opt;
 
-   isdir = 0;
+   opts = 0;
 
    while((c = getopt_long(cnf->argc, cnf->argv, short_opt, long_opt, &opt_index)) != -1)
    {
@@ -101,7 +102,11 @@ int scu_widget_pathcheck(scu_config * cnf)
          break;
 
          case 'd':
-         isdir = 1;
+         opts |= SCU_ODIR;
+         break;
+
+         case 'i':
+         opts |= SCU_ONOTEXISTS;
          break;
 
          case 'h':
@@ -157,7 +162,7 @@ int scu_widget_pathcheck(scu_config * cnf)
       return(1);
    };
 
-   if ((rc = scu_pathcheck(cnf->argv[optind], isdir)) != 0)
+   if ((rc = scu_pathcheck(cnf->argv[optind], opts)) != 0)
    {
       if (!(cnf->quiet))
          fprintf(stderr, "%s: %s: %s\n", PROGRAM_NAME, cnf->widget->name, scu_strerror(rc));
@@ -174,6 +179,7 @@ void scu_widget_pathcheck_usage(scu_config * cnf)
    printf("\n");
    scu_usage_options(cnf);
    printf("  -d, --directory           check path for directory instead of file\n");
+   printf("  -i, --ignore              ignore non-existent files and directories\n");
    printf("\n");
    scu_usage_restrictions();
    printf("\n");

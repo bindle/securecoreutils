@@ -289,7 +289,7 @@ const char * scu_basename(const char * path)
 
 
 /// checks paths
-int scu_pathcheck(const char * path, int isdir)
+int scu_pathcheck(const char * path, int opts)
 {
    int            c;
    size_t         s;
@@ -320,13 +320,19 @@ int scu_pathcheck(const char * path, int isdir)
 
    // verify file is not a symbolic link
    if ((c = lstat(path, &sb)) == -1)
-      return(SCU_ERRNO);
-   if (isdir == 0)
-      if ((sb.st_mode & S_IFMT) != S_IFREG)
-         return(SCU_EFILE);
-   if (isdir != 0)
-      if ((sb.st_mode & S_IFMT) != S_IFDIR)
-         return(SCU_EDIR);
+   {
+      if ( ((opts & SCU_ONOTEXISTS) == 0) || (errno != ENOENT) )
+         return(SCU_ERRNO);
+   }
+   else
+   {
+      if ((opts & SCU_ODIR) == 0)
+         if ((sb.st_mode & S_IFMT) != S_IFREG)
+            return(SCU_EFILE);
+      if ((opts & SCU_ODIR) != 0)
+         if ((sb.st_mode & S_IFMT) != S_IFDIR)
+            return(SCU_EDIR);
+   };
 
    // check path for symlinks
    if ((str = strdup(path)) == NULL)
@@ -339,7 +345,9 @@ int scu_pathcheck(const char * path, int isdir)
       if ((c = lstat(str, &sb)) == -1)
       {
          free(str);
-         return(SCU_ERRNO);
+         if ( ((opts & SCU_ONOTEXISTS) == 0) || (errno != ENOENT) )
+            return(SCU_ERRNO);
+         return(0);
       };
       if ((sb.st_mode & S_IFMT) == S_IFLNK)
       {

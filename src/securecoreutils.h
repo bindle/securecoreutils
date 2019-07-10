@@ -113,6 +113,11 @@
 #define SCU_EDIR     5
 
 
+#define SCU_ONONE       0
+#define SCU_ODIR        1
+#define SCU_ONOTEXISTS  2
+
+
 //////////////////
 //              //
 //  Data Types  //
@@ -157,7 +162,7 @@ struct scu_widget
 #endif
 
 /// checks paths
-int scu_pathcheck(const char * path, int isdir);
+int scu_pathcheck(const char * path, int opts);
 
 /// Displays secure core utils wrapper usage
 void scu_usage(scu_config * cnf);
