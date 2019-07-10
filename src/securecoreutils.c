@@ -60,6 +60,7 @@
 #include "widget-rm.h"
 #include "widget-rmdir.h"
 #include "widget-tail.h"
+#include "widget-touch.h"
 #include "widget-zcat.h"
 
 
@@ -144,6 +145,12 @@ const scu_widget scu_widget_map[] =
       "Writes contents of file to standard out.",     // widget description
       (const char * const[]) { _PREFIX"tail", NULL }, // widget alias
       scu_widget_tail,                                // widget function
+   },
+   {
+      "touch",                                         // widget name
+      "Updates access and modify timestamps of file.", // widget description
+      (const char * const[]) { _PREFIX"touch", NULL }, // widget alias
+      scu_widget_touch,                                // widget function
    },
    {
       "version",                                      // widget name

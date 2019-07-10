@@ -110,6 +110,8 @@ src_securecoreutils_SOURCES		= $(include_HEADERS) \
 					  src/widget-rmdir.h \
 					  src/widget-tail.c \
 					  src/widget-tail.h \
+					  src/widget-touch.c \
+					  src/widget-touch.h \
 					  src/widget-zcat.c \
 					  src/widget-zcat.h \
 					  src/lzw/headers.h \
@@ -136,6 +138,7 @@ install-widget-symlinks:
 	( cd $(DESTDIR)$(bindir); ln -sf securecoreutils $(SCU_PREFIX)rm; )
 	( cd $(DESTDIR)$(bindir); ln -sf securecoreutils $(SCU_PREFIX)rmdir; )
 	( cd $(DESTDIR)$(bindir); ln -sf securecoreutils $(SCU_PREFIX)tail; )
+	( cd $(DESTDIR)$(bindir); ln -sf securecoreutils $(SCU_PREFIX)touch; )
 	( cd $(DESTDIR)$(bindir); ln -sf securecoreutils $(SCU_PREFIX)zcat; )
 	( cd $(DESTDIR)$(bindir); ln -sf securecoreutils $(SCU_PREFIX)bzcat; )
 	( cd $(DESTDIR)$(bindir); ln -sf securecoreutils $(SCU_PREFIX)gzcat; )
