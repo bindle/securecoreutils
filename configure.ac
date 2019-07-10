@@ -72,6 +72,7 @@ AC_PROG_INSTALL
 AC_PROG_MAKE_SET
 AC_USE_SYSTEM_EXTENSIONS # replaces AC_AIX AC_GNU_SOURCE AC_MINIX
 AC_C_BIGENDIAN
+AC_C_RESTRICT
 
 
 # Version Info:
@@ -105,6 +106,7 @@ AC_PROG_LN_S
 # check for common functions
 AC_FUNC_FORK
 AC_FUNC_MALLOC
+AC_FUNC_MKTIME
 AC_FUNC_REALLOC
 AC_FUNC_STRERROR_R
 AC_FUNC_LSTAT_FOLLOWS_SLASHED_SYMLINK
@@ -126,6 +128,7 @@ AC_TYPE_UINT64_T
 # check for required functions
 AC_CHECK_FUNCS([alarm],          [], [AC_MSG_ERROR([missing required functions])])
 AC_CHECK_FUNCS([bzero],          [], [AC_MSG_ERROR([missing required functions])])
+AC_CHECK_FUNCS([localtime_r],    [], [AC_MSG_ERROR([missing required functions])])
 AC_CHECK_FUNCS([memset],         [], [AC_MSG_ERROR([missing required functions])])
 AC_CHECK_FUNCS([rmdir],          [], [AC_MSG_ERROR([missing required functions])])
 AC_CHECK_FUNCS([strcasecmp],     [], [AC_MSG_ERROR([missing required functions])])
@@ -148,11 +151,15 @@ AC_CHECK_HEADERS([stdlib.h],    [], [AC_MSG_ERROR([missing required headers])])
 AC_CHECK_HEADERS([string.h],    [], [AC_MSG_ERROR([missing required headers])])
 AC_CHECK_HEADERS([sys/cdefs.h], [], [AC_MSG_ERROR([missing required headers])])
 AC_CHECK_HEADERS([sys/ioctl.h], [], [AC_MSG_ERROR([missing required headers])])
+AC_CHECK_HEADERS([sys/time.h],  [], [AC_MSG_ERROR([missing required headers])])
 AC_CHECK_HEADERS([sys/types.h], [], [AC_MSG_ERROR([missing required headers])])
 AC_CHECK_HEADERS([sys/stat.h],  [], [AC_MSG_ERROR([missing required headers])])
 AC_CHECK_HEADERS([termios.h],   [], [AC_MSG_ERROR([missing required headers])])
 AC_CHECK_HEADERS([time.h],      [], [AC_MSG_ERROR([missing required headers])])
 AC_CHECK_HEADERS([unistd.h],    [], [AC_MSG_ERROR([missing required headers])])
+
+# check for libraries
+AC_CHECK_LIB([m],      [sin],   [], [AC_MSG_ERROR([missing required library])])
 
 # GNU Libtool Support
 LT_INIT(dlopen disable-fast-install win32-dll)
