@@ -65,7 +65,7 @@
 #endif
 
 void scu_widget_touch_usage(scu_config * cnf);
-time_t scu_widget_touch_strtime(char *restrict s, time_t t);
+time_t scu_widget_touch_strtime(char * s, time_t t);
 
 
 /////////////////
@@ -305,7 +305,7 @@ int scu_widget_touch(scu_config * cnf)
 }
 
 
-time_t scu_widget_touch_strtime(char *restrict s, time_t t)
+time_t scu_widget_touch_strtime(char * s, time_t t)
 {
 
    size_t         len;
