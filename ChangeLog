@@ -1,8 +1,8 @@
 
 Secure Core Utilities
-Copyright (C) 2015, 2017 David M. Syzdek <david@syzdek.net>.
+Copyright (C) 2015, 2017, 2018, 2019 David M. Syzdek <david@syzdek.net>.
 
-0.2
+0.2 2019-07-09 (syzdek)
   - core: adding ability to disable creating widget symlinks (syzdek)
   - core: updating copyright notices (syzdek)
   - core: adding ability to change widget alias prefix at compile time (syzdek)

@@ -37,12 +37,12 @@
 AC_PREREQ([2.65])
 
 
-AC_COPYRIGHT([Copyright (C) 2015, 2017 David M. Syzdek <david@syzdek.net>.])
+AC_COPYRIGHT([Copyright (C) 2015, 2017, 2018, 2019 David M. Syzdek <david@syzdek.net>.])
 AC_REVISION(0.1)
-AC_INIT([Secure Core Utilities],[0.1],[syzdek@bindlebinaries.com],[securecoreutils])
+AC_INIT([Secure Core Utilities],[0.2],[david@syzdek.net],[securecoreutils])
 
 
-AC_SUBST([RELEASE_MONTH],["July 2017"])
+AC_SUBST([RELEASE_MONTH],["July 2019"])
 
 
 # directory locations
