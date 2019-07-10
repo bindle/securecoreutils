@@ -238,8 +238,11 @@ int scu_widget_touch(scu_config * cnf)
    // checks file for restriction validations
    if ((rc = scu_pathcheck(cnf->argv[optind], sflags)) != 0)
    {
-      fprintf(stderr, "%s: %s: %s\n", PROGRAM_NAME, cnf->widget->name, scu_strerror(rc));
-      return(1);
+      if ((rc = scu_pathcheck(cnf->argv[optind], sflags | SCU_ODIR)) != 0)
+      {
+         fprintf(stderr, "%s: %s: %s\n", PROGRAM_NAME, cnf->widget->name, scu_strerror(rc));
+         return(1);
+      };
    };
 
 
