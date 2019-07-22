@@ -670,7 +670,8 @@ int scu_is_ascii_buffer(const char * buff, ssize_t len)
    assert(buff != NULL);
 
    for(pos = 0; pos < len; pos++)
-      if ((buff[pos] < 32) || (buff[pos] > 126))
+      if ( ( ((buff[pos] < 32) || (buff[pos] > 126)) ) &&
+           ( ((buff[pos] <  9) || (buff[pos] >  13)) ) )
          return(0);
 
    return(1);
