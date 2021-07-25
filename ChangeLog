@@ -4,6 +4,7 @@ Copyright (C) 2015, 2017, 2018, 2019 David M. Syzdek <david@syzdek.net>.
 
 0.3
   - core: accepting tabs, '\n', '\r',  and form feed as ASCII (syzdek)
+  - code: updating contrib/bindletools to v0.4-39-g28ee013 (syzdek)
 
 0.2 2019-07-09 (syzdek)
   - core: adding ability to disable creating widget symlinks (syzdek)
