@@ -524,18 +524,21 @@ const scu_widget * scu_widget_lookup(const char * wname, int exact)
       // compares widget name
       if (strcmp(widget->name, wname) == 0)
          return(widget);
-      for(z = 0; ( (widget->name[z] != '\0') &&
-                   (wname[z] != '\0') &&
-                   (widget->name[z] == wname[z]) ); z++)
+      if (!(exact))
       {
-         if (z > prefix_uniq)
+         for(z = 0; ( (widget->name[z] != '\0') &&
+                      (wname[z] != '\0') &&
+                      (widget->name[z] == wname[z]) ); z++)
          {
-            matched_widget = widget;
-            prefix_uniq    = z;
-         }
-         else if (z == prefix_uniq)
-         {
-            prefix_common = z;
+            if (z > prefix_uniq)
+            {
+               matched_widget = widget;
+               prefix_uniq    = z;
+            }
+            else if (z == prefix_uniq)
+            {
+               prefix_common = z;
+            };
          };
       };
 
@@ -546,18 +549,21 @@ const scu_widget * scu_widget_lookup(const char * wname, int exact)
       {
          if (strcmp(widget->alias[y], wname) == 0)
             return(widget);
-         for(z = 0; ( (widget->alias[y][z] != '\0') &&
-                      (wname[z] != '\0') &&
-                      (widget->alias[y][z] == wname[z]) ); z++)
+         if (!(exact))
          {
-            if (z > prefix_uniq)
+            for(z = 0; ( (widget->alias[y][z] != '\0') &&
+                         (wname[z] != '\0') &&
+                         (widget->alias[y][z] == wname[z]) ); z++)
             {
-               matched_widget = widget;
-               prefix_uniq    = z;
-            }
-            else if (z == prefix_uniq)
-            {
-               prefix_common = z;
+               if (z > prefix_uniq)
+               {
+                  matched_widget = widget;
+                  prefix_uniq    = z;
+               }
+               else if (z == prefix_uniq)
+               {
+                  prefix_common = z;
+               };
             };
          };
       };
