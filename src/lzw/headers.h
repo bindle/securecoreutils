@@ -28,9 +28,6 @@
 # include <features.h>
 #endif
 # include <stdarg.h>
-#if defined(HAVE_SYS_CDEFS_H)
-# include <sys/cdefs.h>
-#endif
 # include <assert.h>
 
 /* i'll see you in hell windows */
